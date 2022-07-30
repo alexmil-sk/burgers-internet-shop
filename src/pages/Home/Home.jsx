@@ -6,20 +6,25 @@ import AppPizzaBlockBlur from "../../components/AppPizzaBlock/AppPizzaBlockBlur.
 import AppPizzaBlock from "../../components/AppPizzaBlock/AppPizzaBlock.jsx";
 
 function Home() {
-  const arrSortTypes = ['популярности','цене','алфавиту'];
+  const arrSortTypes = [
+    {name:'популярности', sortProperty: 'rating'},
+    {name: 'цене', sortProperty: 'price'},
+    {name: 'алфавиту', sortProperty: 'name'}
+  ];
   
   const [pizzaArray, setPizzaArray] = useState([]);
   const [categoryId, setCategoryId] = useState(0);
   const [sortType, setSortType] = useState(arrSortTypes[0]);
   const [toggleOpenPopup, setTogglesOpenPopup] = useState(false);
+  const [radioOrder, setRadioOrder] = useState('asc');
   
   
   useEffect(() => {
     setPizzaArray([]);
-    fetch(`https://62e38bb63c89b95396ca9aec.mockapi.io/items?${categoryId ? ('category='+ categoryId) : ''}`)
+    fetch(`https://62e38bb63c89b95396ca9aec.mockapi.io/items?${categoryId ? ('category='+ categoryId) : ''}&sortBy=${sortType.sortProperty}&order=${radioOrder === 'asc' ? 'asc' : 'desc'}`)
       .then(r => r.json())
       .then(data => setPizzaArray(data))
-  }, [categoryId, sortType])
+  }, [categoryId, sortType, radioOrder])
   
   
   function onClickCategory(idx) {
@@ -30,10 +35,16 @@ function Home() {
     setTogglesOpenPopup(!toggleOpenPopup)
   }
   
-  function getActiveSortType (type) {
-    setSortType(type);
+  function getActiveSortType (sortObj) {
+    setSortType(sortObj);
     setTogglesOpenPopup(false);
   }
+  
+  function getRadioOrder (e) {
+    setRadioOrder(e.target.value);
+  }
+  
+  console.log(radioOrder);
   
   return (
     <>
@@ -45,6 +56,8 @@ function Home() {
         <AppSort
           sortType={sortType}
           arrSortTypes={arrSortTypes}
+          radioOrder={radioOrder}
+          getRadioOrder={getRadioOrder}
           toggleSortHandle={toggleSortHandle}
           toggleOpenPopup={toggleOpenPopup}
           getActiveSortType={getActiveSortType}

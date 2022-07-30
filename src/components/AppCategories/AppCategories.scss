@@ -10,12 +10,13 @@
 
   display: grid;
   grid-template-columns: repeat(6, auto);
-  grid-template-rows: repeat(1, 52px);
+  grid-template-rows: repeat(1, 79px);
   grid-column-gap: 25px;
   grid-row-gap: 0;
   justify-items: center;
   align-items: center;
   border-radius: 20px;
+  margin-right: 5px;
 
   @media (max-width: 700px) {
     grid-template-columns: repeat(3, auto);

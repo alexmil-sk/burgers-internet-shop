@@ -1,22 +1,21 @@
 @import '../../styles/_variables.scss';
 
 .sort {
-  display:flex;
+  position: relative;
+  display: flex;
   justify-content: center;
   background: $neutral-50;
   padding: 15px;
   border-radius: 20px;
 
   &__label {
-    position: relative;
     display: grid;
     grid-template-columns: repeat(2, 1fr);
-    grid-template-rows: 1fr;
+    grid-template-rows: repeat(2, 1fr);;
     align-items: center;
     &-title {
       flex: 1 1 auto;
       text-align: left;
-
     }
     &-btn {
       flex: 1 1 auto;
@@ -28,41 +27,69 @@
       text-decoration-style: dashed;
       text-decoration-thickness: 2px;
     }
+    &-radio_desc {
+      align-self: center;
+      justify-self: left;
+      margin-top: 5px;
+      margin-left: 5px;
+      border-left: 1px solid $gray-600;
+      input {
+        margin-right: 5px;
+        margin-left: 11px;
+      }
+      span {
+        font-size: 1.4rem;
+      }
+    }
+    &-radio_asc {
+      align-self: center;
+      justify-self: right;
+      margin-top: 5px;
+      margin-right: 5px;
+      input {
+        margin-right: 3px;
+        margin-bottom: 12px;
+      }
+      span {
+        font-size: 1.4rem;
+      }
+    }
   }
+
   &__popup {
     position: absolute;
-    display: block;
+    visibility: visible;
+    //display: block;
     background: $gray-200;
-    top: 202px;
-    right: 45px;
+    top: 60px;
+    right: 20px;
     padding: 5px;
     border: 1px solid $gray-400;
     opacity: 1;
     cursor: pointer;
     z-index: 100;
 
-    transition-property: opacity;
-    transition-timing-function: ease-out;
-    transition-duration: 700ms;
-    transition-delay: 0s;
+    transition-property: visibility, opacity;
+    transition-timing-function: ease-out, ease-out;
+    transition-duration: 700ms, 700ms;
+    transition-delay: 0s, 0s;
 
     @media (max-width: 1000px) {
-      top: 265px;
-      right: 420px;
+      right: 37%;
     }
     @media (max-width: 700px) {
-      top: 315px;
-      right: 282px;
+      right: 30%;
     }
     @media (max-width: 570px) {
-      top: 368px;
-      right: 150px;
+      right: 28%;
     }
   }
 
   .invisible {
     opacity: 0;
+    visibility: hidden;
   }
+
   .active {
     color: $red-400;
   }

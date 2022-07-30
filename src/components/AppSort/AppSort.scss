@@ -1,7 +1,7 @@
 @import '../../styles/_variables.scss';
 
 .sort {
-  display: flex;
+  display:flex;
   justify-content: center;
   background: $neutral-50;
   padding: 15px;
@@ -9,11 +9,10 @@
 
   &__label {
     position: relative;
-    display: flex;
-    gap: 0.5em;
-    flex-wrap: wrap;
-    justify-content: space-between;
-    align-self: center;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: 1fr;
+    align-items: center;
     &-title {
       flex: 1 1 auto;
       text-align: left;

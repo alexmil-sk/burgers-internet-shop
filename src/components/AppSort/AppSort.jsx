@@ -1,16 +1,10 @@
-import React, {useState} from 'react';
+import React from 'react';
 import './AppSort.scss';
 
-function AppSort() {
-  const sortTypes = ['популярности','цене','алфавиту'];
+function AppSort(props) {
   
-  const [toggleOpenPopup, setTogglesOpenPopup] = useState(false);
-  const [activeSort, setActiveSort] = useState(sortTypes[0]);
+  const {sortType, arrSortTypes, toggleSortHandle, toggleOpenPopup, getActiveSortType} = props;
   
-  function getActiveSortType (sortType) {
-    setActiveSort(sortType);
-    setTogglesOpenPopup(false);
-  }
   
   
   return (
@@ -19,19 +13,19 @@ function AppSort() {
         <div className="sort__label-title">
           <strong >Сортировка по:</strong>
         </div>
-        <div className="sort__label-btn" onClick={() => setTogglesOpenPopup(!toggleOpenPopup)}>
-          <span >{activeSort}</span>
+        <div className="sort__label-btn" onClick={toggleSortHandle}>
+          <span >{sortType}</span>
         </div>
       </div>
       <div className={toggleOpenPopup ? 'sort__popup' : 'sort__popup invisible' }>
           <ul>
             {
-              sortTypes.map((sortType) =>
+              arrSortTypes.map((type) =>
                 <li
-                  onClick={() => getActiveSortType (sortType)}
-                  className={activeSort === sortType ? "active" : ''}
-                  key={sortType}
-                >{sortType}</li> )
+                  onClick={() => getActiveSortType (type)}
+                  className={sortType === type ? "active" : ''}
+                  key={type}
+                >{type}</li> )
             }
           </ul>
         </div>

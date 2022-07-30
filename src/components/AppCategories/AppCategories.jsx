@@ -1,17 +1,10 @@
-import React, {useState} from 'react';
+import React from 'react';
 import './AppCategories.scss';
 
 
-function AppCategories() {
+function AppCategories({categoryId, onClickCategory}) {
   
-  const pizzaTypes = ['Все', 'Мясные', 'Вегетарианская', 'Гриль', 'Острые', 'Закрытые']
-  
-  const [activeIndex, setActiveIndex] = useState(0);
-  
-  
-  function onClickCategory(idx) {
-    setActiveIndex(idx);
-  }
+  const categories = ['Все', 'Мясные', 'Вегетарианская', 'Гриль', 'Острые', 'Закрытые']
   
   
   return (
@@ -19,12 +12,12 @@ function AppCategories() {
       <div className="categories">
         
         {
-          pizzaTypes.map((pizza, idx) => (
+          categories.map((category, idx) => (
             <button
               onClick={() => onClickCategory(idx)}
-              className={activeIndex === idx ? 'active' : ''}
-              key={pizza}
-            >{pizza}</button>
+              className={categoryId === idx ? 'active' : ''}
+              key={category}
+            >{category}</button>
           ))
         }
       </div>

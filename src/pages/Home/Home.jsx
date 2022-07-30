@@ -6,22 +6,49 @@ import AppPizzaBlockBlur from "../../components/AppPizzaBlock/AppPizzaBlockBlur.
 import AppPizzaBlock from "../../components/AppPizzaBlock/AppPizzaBlock.jsx";
 
 function Home() {
+  const arrSortTypes = ['популярности','цене','алфавиту'];
   
   const [pizzaArray, setPizzaArray] = useState([]);
+  const [categoryId, setCategoryId] = useState(0);
+  const [sortType, setSortType] = useState(arrSortTypes[0]);
+  const [toggleOpenPopup, setTogglesOpenPopup] = useState(false);
   
-  //useEffect(() => {
-  //  fetch("https://62e38bb63c89b95396ca9aec.mockapi.io/items")
-  //    .then(r => r.json())
-  //    .then(data => setPizzaArray(data))
-  //}, [])
   
-  //https://62e38bb63c89b95396ca9aec.mockapi.io/items?sortBy=id&order=desc&search=Пепперони
+  useEffect(() => {
+    setPizzaArray([]);
+    fetch(`https://62e38bb63c89b95396ca9aec.mockapi.io/items?${categoryId ? ('category='+ categoryId) : ''}`)
+      .then(r => r.json())
+      .then(data => setPizzaArray(data))
+  }, [categoryId, sortType])
+  
+  
+  function onClickCategory(idx) {
+    setCategoryId(idx);
+  }
+  
+  function toggleSortHandle () {
+    setTogglesOpenPopup(!toggleOpenPopup)
+  }
+  
+  function getActiveSortType (type) {
+    setSortType(type);
+    setTogglesOpenPopup(false);
+  }
   
   return (
     <>
       <div className="info-panel">
-        <AppCategories/>
-        <AppSort/>
+        <AppCategories
+          categoryId={categoryId}
+          onClickCategory={onClickCategory}
+        />
+        <AppSort
+          sortType={sortType}
+          arrSortTypes={arrSortTypes}
+          toggleSortHandle={toggleSortHandle}
+          toggleOpenPopup={toggleOpenPopup}
+          getActiveSortType={getActiveSortType}
+        />
       </div>
       <div className="pizza-list">
         

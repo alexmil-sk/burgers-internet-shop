@@ -1,0 +1,63 @@
+@import './_variables.scss';
+
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;500;600;700;800;900&family=Roboto&display=swap');
+
+
+* {
+  padding: 0;
+  margin: 0;
+  list-style: none;
+  font-family: 'Nunito', sans-serif;
+  box-sizing: border-box;
+}
+
+a {
+  text-decoration: none;
+}
+
+.wrapper {
+  position: relative;
+  max-width: 1000px;
+  min-height: 100vh;
+  margin: 0 auto;
+  padding: 25px;
+  background: $amber-400;
+}
+
+.info-panel {
+  display: grid;
+  grid-template-columns: 70% 30%;
+  grid-template-rows: 1fr;
+
+  @media (max-width: 1000px) {
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr 0.3fr;
+    grid-row-gap: 10px;
+  }
+}
+
+.pizza-list {
+  //display: flex;
+  //flex-wrap: wrap;
+  //justify-content: space-between;
+
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(4, 1fr);
+  grid-column-gap: 25px;
+  grid-row-gap: 0;
+  justify-items: center;
+
+  @media (max-width: 990px) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  @media (max-width: 660px) {
+    grid-template-columns: repeat(1, 1fr);
+  }
+
+}
+
+.activeClassName {
+  color: $blue-800;
+  font-weight: 900;
+}

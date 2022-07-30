@@ -1,0 +1,156 @@
+@import '../../styles/_variables.scss';
+
+.pizza-block {
+  width: 250px;
+  background: $neutral-50;
+  box-shadow: 0px 0px 15px 15px $gray-100;
+  margin: 40px 25px;
+  padding: 10px;
+  border-radius: 15px;
+  border: 1px solid $red-600;
+
+  &__image {
+    height: 250px;
+  }
+
+  img {
+    width: 100%;
+  }
+
+  &__title {
+    border-top: 1px solid $red-200;
+    text-align: center;
+    margin: 10px 0;
+    padding-top: 10px;
+  }
+
+  &__selector {
+    display: flex;
+    flex-direction: column;
+    background: $gray-200;
+    padding: 10px;
+  }
+
+  &__selector-type {
+    display: flex;
+
+    li {
+      flex-basis: 50%;
+      padding: 5px 10px;
+    }
+
+    li:hover {
+      outline: 2px solid $neutral-50;
+      cursor: pointer;
+    }
+
+    .active {
+      background: $neutral-50;
+    }
+  }
+
+  &__selector-size {
+    display: flex;
+    justify-content: space-between;
+    font-size: .9rem;
+    margin-top: 10px;
+
+    li {
+      padding: 5px 10px;
+    }
+
+    li:hover {
+      outline: 2px solid $neutral-50;
+      cursor: pointer;
+    }
+
+    .active {
+      background: $neutral-50;
+    }
+  }
+
+  &__bottom {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px;
+
+    &-button {
+      position: relative;
+      display: flex;
+      width: 90%;
+      justify-content: center;
+      align-items: center;
+      padding: 10px;
+      margin-top: 10px;
+      color: $green-900;
+      background: $green-100;
+      border-radius: 15px;
+      border: 1px solid $green-900;
+      box-shadow: inset 0 0 10px 2px $green-900;
+      cursor: pointer;
+      text-transform: upperCase;
+      font-size: 0.99rem;
+
+      transition-property: background, color;
+      transition-timing-function: ease, ease-out;
+      transition-duration: 1000ms, 500ms;
+      transition-delay: 0s, 0s;
+
+      &-count {
+        position: absolute;
+        top: -30px;
+        right: -10px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 50px;
+        height: 50px;
+        background: $green-800;
+        color: $neutral-50;
+        padding: 2px;
+        margin-left: 10px;
+        border-radius: 50%;
+        font-size: 1.5rem;
+        box-shadow: none;
+
+        transition-property: background, color, box-shadow;
+        transition-timing-function: ease-out, ease-out, ease-out;
+        transition-duration: 200ms, 200ms, 200ms;
+        transition-delay: .3s, .3s, .3s;
+      }
+    }
+
+    &-button:hover {
+      background: $green-800;
+      color: $neutral-50;
+
+    }
+
+    &-button:hover span {
+      background: $neutral-50;
+      color: $green-900;
+      border: 1px solid $green-700;
+      box-shadow: 0 0 5px 5px $green-400;
+
+      animation-name: bounce;
+      animation-duration: 1500ms;
+      animation-timing-function: ease-in-out;
+      animation-iteration-count: infinite;
+    }
+  }
+}
+
+@keyframes bounce {
+
+  0%, 100% {
+    transform: translateY(0%);
+    animation-timing-function: cubic-bezier(0.8, 0, 1, 1);
+  }
+  50% {
+    transform: translateY(25%);
+    animation-timing-function: cubic-bezier(0, 0, 0.2, 1);
+  }
+
+}

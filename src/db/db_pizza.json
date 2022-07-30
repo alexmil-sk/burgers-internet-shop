@@ -1,0 +1,102 @@
+[
+  {
+    "id": 0,
+    "imageUrl": "https://e7.pngegg.com/pngimages/1013/937/png-clipart-pizza-delivery-bacon-italian-cuisine-restaurant-pizza-food-recipe.png",
+    "name": "Папперони Фреш с перцем",
+    "types": [ 0, 1 ],
+    "sizes": [ 26, 30, 40 ],
+    "price": 803,
+    "category": 0,
+    "rating": 4
+  },
+  {
+    "id": 1,
+    "imageUrl": "https://bestmargheritapizza.com/wp-content/uploads/2017/12/veggie-pizza-2-600x610.png",
+    "name": "Сырная",
+    "types": [0],
+    "sizes": [26,40],
+    "price": 245,
+    "category": 1,
+    "rating": 6
+  },
+  {
+    "id": 2,
+    "imageUrl": "https://eda.yandex.ru/images/3702558/3a765c648acdb469533030778bc7aef2-680x500.jpg",
+    "name": "Цыпленок барбекю",
+    "types": [0],
+    "sizes": [26,40],
+    "price": 295,
+    "category": 1,
+    "rating": 4
+  },
+  {
+    "id": 3,
+    "imageUrl": "https://catherineasquithgallery.com/uploads/posts/2021-03/thumbs/1614548255_25-p-pitstsa-na-belom-fone-45.jpg",
+    "name": "Кисло-сладский цыпленок",
+    "types": [1],
+    "sizes": [26, 30, 40],
+    "price": 275,
+    "category": 2,
+    "rating": 2
+  },
+  {
+    "id": 4,
+    "imageUrl": "https://www.xn--80afnbsvg2ge.com/privados/%D0%BF%D0%B8%D1%86%D1%86%D0%B0_5f9836bbcc855_img.jpg",
+    "name": "Чизбургер-пицца",
+    "types": [0, 1],
+    "sizes": [26, 30, 40],
+    "price": 415,
+    "category": 3,
+    "rating": 8
+  },
+  {
+    "id": 5,
+    "imageUrl": "https://e7.pngegg.com/pngimages/172/397/png-clipart-pizza-hut-sushi-italian-cuisine-dodo-pitstsa-pizza-food-cheese.png",
+    "name": "Крейзи пепперони",
+    "types": [0],
+    "sizes": [30, 40],
+    "price": 580,
+    "category": 2,
+    "rating": 2
+  },
+  {
+    "id": 6,
+    "imageUrl": "https://catherineasquithgallery.com/uploads/posts/2021-03/1614548275_66-p-pitstsa-na-belom-fone-102.png",
+    "name": "Пепперони",
+    "types": [0, 1],
+    "sizes": [26, 30, 40],
+    "price": 675,
+    "category": 1,
+    "rating": 9
+  },
+  {
+    "id": 7,
+    "imageUrl": "https://pizzasorento.ru/image/ulyanovsk/menu/pitstsa/pitstsa-korolevskaya/upload/thumb.566522118cb7dafd15361d19701337a88f866a1d.png.rf700x600.jpg",
+    "name": "Маргарита",
+    "types": [0, 1],
+    "sizes": [26, 30, 40],
+    "price": 450,
+    "category": 4,
+    "rating": 10
+  },
+  {
+    "id": 8,
+    "imageUrl": "https://kartinkin.net/uploads/posts/2021-03/1617211299_53-p-pitstsa-myasnaya-krasivo-60.png",
+    "name": "Четыре сезона",
+    "types": [0, 1],
+    "sizes": [26, 30, 40],
+    "price": 395,
+    "category": 5,
+    "rating": 10
+  },
+  {
+    "id": 9,
+    "imageUrl": "https://www.kindpng.com/picc/m/3-34866_high-resolution-pizza-png-transparent-png.png",
+    "name": "Овощи и грибы",
+    "types": [0, 1],
+    "sizes": [26, 30, 40],
+    "price": 285,
+    "category": 5,
+    "rating": 7
+  }
+]

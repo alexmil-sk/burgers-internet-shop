@@ -1,0 +1,70 @@
+@import '../../styles/_variables.scss';
+
+.sort {
+  display: flex;
+  justify-content: center;
+  background: $neutral-50;
+  padding: 15px;
+  border-radius: 20px;
+
+  &__label {
+    position: relative;
+    display: flex;
+    gap: 0.5em;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-self: center;
+    &-title {
+      flex: 1 1 auto;
+      text-align: left;
+
+    }
+    &-btn {
+      flex: 1 1 auto;
+      text-align: center;
+
+      cursor: pointer;
+      color: $red-400;
+      text-decoration: underline;
+      text-decoration-style: dashed;
+      text-decoration-thickness: 2px;
+    }
+  }
+  &__popup {
+    position: absolute;
+    display: block;
+    background: $gray-200;
+    top: 202px;
+    right: 45px;
+    padding: 5px;
+    border: 1px solid $gray-400;
+    opacity: 1;
+    cursor: pointer;
+    z-index: 100;
+
+    transition-property: opacity;
+    transition-timing-function: ease-out;
+    transition-duration: 700ms;
+    transition-delay: 0s;
+
+    @media (max-width: 1000px) {
+      top: 265px;
+      right: 420px;
+    }
+    @media (max-width: 700px) {
+      top: 315px;
+      right: 282px;
+    }
+    @media (max-width: 570px) {
+      top: 368px;
+      right: 150px;
+    }
+  }
+
+  .invisible {
+    opacity: 0;
+  }
+  .active {
+    color: $red-400;
+  }
+}

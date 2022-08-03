@@ -14,10 +14,10 @@ function AppHeader() {
           <div className="header__logo-img">
             <img src={pizzaMain}  width="50" alt="pizza-main"/>
           </div>
-          <span>iPIZZA</span>
+          <span>iBurgeR</span>
         </div>
       </Link>
-      <Link to="cart" >
+      <Link to="cart" className="header__a">
         <div className="header__cart">
           <div className="header__cart-sum">
             <span>{500}&nbsp; &#8381;</span>

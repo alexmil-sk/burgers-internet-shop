@@ -5,7 +5,8 @@ import AppSort from "../../components/AppSort/AppSort.jsx";
 import AppPizzaBlockBlur from "../../components/AppPizzaBlock/AppPizzaBlockBlur.jsx";
 import AppPizzaBlock from "../../components/AppPizzaBlock/AppPizzaBlock.jsx";
 
-function Home() {
+function Home({searchField}) {
+  
   const arrSortTypes = [
     {name:'популярности', sortProperty: 'rating'},
     {name: 'цене', sortProperty: 'price'},
@@ -18,13 +19,19 @@ function Home() {
   const [toggleOpenPopup, setTogglesOpenPopup] = useState(false);
   const [radioOrder, setRadioOrder] = useState('asc');
   
+  const category = categoryId ? ('category='+ categoryId) : '';
+  const order = radioOrder === 'asc' ? 'asc' : 'desc';
+  //const search = searchField ? ('search='+ searchField) : '';
   
-  //useEffect(() => {
-  //  setPizzaArray([]);
-  //  fetch(`https://62e38bb63c89b95396ca9aec.mockapi.io/items?${categoryId ? ('category='+ categoryId) : ''}&sortBy=${sortType.sortProperty}&order=${radioOrder === 'asc' ? 'asc' : 'desc'}`)
-  //    .then(r => r.json())
-  //    .then(data => setPizzaArray(data))
-  //}, [categoryId, sortType, radioOrder])
+  const search = ''; //Использовал JS поиск по pizzaArray т.к. mpckapi.io не выполняет поиск по двум параметрам
+  
+  
+  useEffect(() => {
+    setPizzaArray([]);
+    fetch(`https://62e38bb63c89b95396ca9aec.mockapi.io/items?${search}&${category}&sortBy=${sortType.sortProperty}&order=${order}`)
+      .then(r => r.json())
+      .then(data => setPizzaArray(data))
+  }, [categoryId, sortType, radioOrder, searchField])
   
   
   function onClickCategory(idx) {
@@ -44,7 +51,6 @@ function Home() {
     setRadioOrder(e.target.value);
   }
   
-  console.log(radioOrder);
   
   return (
     <>
@@ -69,12 +75,9 @@ function Home() {
         {
           !pizzaArray.length
             ? [...new Array(12)].map((_, idx) => <AppPizzaBlockBlur key={idx}/>)
-            : pizzaArray.map(item =>
-              (<AppPizzaBlock
-                  {...item}
-                  key={item.id}
-                />
-              ))
+            :  pizzaArray
+              .filter(item => item.name.toLowerCase().includes(searchField.toLowerCase()))
+              .map(item => (<AppPizzaBlock {...item} key={item.id} /> ))
         }
         {/*Вариант со SCELETON ===========================*/}
         {/*{*/}

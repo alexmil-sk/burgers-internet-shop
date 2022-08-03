@@ -8,44 +8,73 @@
   height: 70px;
   border-radius: 10px;
   padding: 10px;
+
   &__logo {
     display: flex;
     align-items: center;
+
     &-img {
       width: 50px;
       margin-right: 20px;
     }
+
     span {
       font-size: 1.4rem;
       font-weight: 900;
       color: $yellow-700;
     }
   }
+  &__a {
+    display: flex;
+    align-items: center;
+  }
   &__cart {
     display: flex;
-    align-self: center;
     width: 150px;
     height: 80%;
     padding: 10px;
     background: $red-600;
     border-radius: 25px;
     cursor: pointer;
+    color: $neutral-50;
+
+    transition: all ease-in-out 200ms;
+
     &-sum {
       text-align: center;
       align-self: center;
-      color: $neutral-50;
+
       font-weight: 700;
       flex: 0 0 50%;
       border-right: 1px solid $neutral-50;
     }
+
     &-icon {
       margin: 0 auto;
       align-self: center;
       font-size: 1rem;
-      color: $neutral-50;
       font-weight: 700;
+
       span {
         margin-left: 5px;
+      }
+    }
+
+    &:hover{
+      border: 1px solid $red-600;
+      background: $red-100;
+      color: $red-900;
+
+      div:first-child {
+        border-right: 1px solid $red-900;
+      }
+    }
+    &:active {
+      border: none;
+      background: $red-600;
+      color: $neutral-50;
+      div:first-child {
+        border-right: 1px solid $neutral-50;
       }
     }
   }

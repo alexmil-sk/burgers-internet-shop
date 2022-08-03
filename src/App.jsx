@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useState} from "react";
 import { Routes, Route } from "react-router-dom";
 import AppHeader from "./components/AppHeader/AppHeader.jsx";
 import Home from "./pages/Home/Home.jsx";
@@ -9,18 +9,18 @@ import AppSearch from "./components/AppSearch/AppSearch.jsx";
 
 function App() {
   
+  const [searchField, setSearchField] = useState('');
   
   return (
     <div className="wrapper">
       <AppHeader/>
-      <AppSearch />
+      <AppSearch searchField={searchField} setSearchField={setSearchField}/>
       
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="cart" element={<Cart />}/>
-        <Route path="*" element={<NotFound />}/>
-      </Routes>
-      
+        <Routes>
+          <Route path="/" element={<Home searchField={searchField}/>} />
+          <Route path="cart" element={<Cart />}/>
+          <Route path="*" element={<NotFound />}/>
+        </Routes>
     </div>
   )
 }

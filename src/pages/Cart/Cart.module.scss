@@ -53,9 +53,14 @@
         border-radius: 30px;
         padding: 10px 15px;
         color: $gray-400;
+
+        transition: all ease-in-out 500ms;
         &:hover {
           background: $gray-800;
           color: $neutral-50;
+        }
+        &:active {
+          transform: scale(.8)
         }
       }
       .cartBottomBtnPay {
@@ -67,9 +72,14 @@
         border: 1px solid $red-300;
         color: $red-400;
         cursor: pointer;
+
+        transition: all ease-in-out 500ms;
         &:hover {
           background: $red-600;
           color: $neutral-50;
+        }
+        &:active {
+          transform: scale(.8)
         }
       }
 

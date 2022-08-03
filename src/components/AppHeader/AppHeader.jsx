@@ -6,7 +6,7 @@ import {Link} from "react-router-dom";
 
 
 
-function AppHeader(props) {
+function AppHeader() {
   return (
     <div className="header">
       <Link to="/">

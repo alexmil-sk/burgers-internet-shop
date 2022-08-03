@@ -19,12 +19,12 @@ function Home() {
   const [radioOrder, setRadioOrder] = useState('asc');
   
   
-  useEffect(() => {
-    setPizzaArray([]);
-    fetch(`https://62e38bb63c89b95396ca9aec.mockapi.io/items?${categoryId ? ('category='+ categoryId) : ''}&sortBy=${sortType.sortProperty}&order=${radioOrder === 'asc' ? 'asc' : 'desc'}`)
-      .then(r => r.json())
-      .then(data => setPizzaArray(data))
-  }, [categoryId, sortType, radioOrder])
+  //useEffect(() => {
+  //  setPizzaArray([]);
+  //  fetch(`https://62e38bb63c89b95396ca9aec.mockapi.io/items?${categoryId ? ('category='+ categoryId) : ''}&sortBy=${sortType.sortProperty}&order=${radioOrder === 'asc' ? 'asc' : 'desc'}`)
+  //    .then(r => r.json())
+  //    .then(data => setPizzaArray(data))
+  //}, [categoryId, sortType, radioOrder])
   
   
   function onClickCategory(idx) {

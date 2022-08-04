@@ -13,7 +13,7 @@ function Pagination({onPageChange}) {
         nextLabel=" >"
         onPageChange={onPageChange}
         pageRangeDisplayed={8}
-        pageCount={4}
+        pageCount={5}
         previousLabel="< "
         renderOnZeroPageCount={null}
       />

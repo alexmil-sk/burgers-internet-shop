@@ -49,10 +49,10 @@
         justify-content: space-between;
         align-items: center;
         width: 210px;
-        border: 1px solid $gray-300;
+        border: 1px solid $gray-600;
         border-radius: 30px;
         padding: 10px 15px;
-        color: $gray-400;
+        color: $gray-600;
 
         transition: all ease-in-out 500ms;
         &:hover {
@@ -69,8 +69,8 @@
         align-items: center;
         border-radius: 30px;
         padding: 10px 15px;
-        border: 1px solid $red-300;
-        color: $red-400;
+        border: 1px solid $red-600;
+        color: $red-600;
         cursor: pointer;
 
         transition: all ease-in-out 500ms;

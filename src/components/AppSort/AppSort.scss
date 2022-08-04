@@ -10,15 +10,16 @@
 
   &__label {
     display: grid;
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: repeat(3, 1fr);
     grid-template-rows: repeat(2, 1fr);;
     align-items: center;
+
     &-title {
-      flex: 1 1 auto;
       text-align: left;
     }
+
     &-btn {
-      flex: 1 1 auto;
+      grid-column: 2/4;
       text-align: center;
 
       cursor: pointer;
@@ -27,31 +28,64 @@
       text-decoration-style: dashed;
       text-decoration-thickness: 2px;
     }
+
     &-radio_desc {
       align-self: center;
       justify-self: left;
       margin-top: 5px;
       margin-left: 5px;
       border-left: 1px solid $gray-600;
+
       input {
         margin-right: 5px;
         margin-left: 11px;
       }
+
       span {
         font-size: 1.4rem;
       }
     }
+
     &-radio_asc {
       align-self: center;
       justify-self: right;
       margin-top: 5px;
       margin-right: 5px;
+
       input {
         margin-right: 3px;
         margin-bottom: 12px;
       }
+
       span {
         font-size: 1.4rem;
+      }
+    }
+
+    &-select select {
+      appearance: none;
+      //outline: none;
+
+      width: auto;
+      border: 1px solid $gray-400;
+      border-radius: 0.25em;
+      padding: 0.25em 0.5em;
+      font-size: 1.25rem;
+      cursor: pointer;
+      line-height: 1.1;
+      background-color: #fff;
+      text-align: center;
+
+      transition: all ease-in-out 200ms;
+      &::-ms-expand {
+        display: none;
+      }
+
+      &:hover {
+        border: 2px solid $gray-600;
+      }
+      &:focus {
+        border: 2px solid $gray-400;
       }
     }
   }

@@ -1,9 +1,11 @@
 import React, {useEffect, useState} from 'react';
+
 import AppCategories from "../../components/AppCategories/AppCategories.jsx";
 import AppSort from "../../components/AppSort/AppSort.jsx";
 //import SceletonLoaderPizzaBlock from "../../components/SceletonLoaderPizzaBlock/SceletonLoaderPizzaBlock.jsx";
 import AppPizzaBlockBlur from "../../components/AppPizzaBlock/AppPizzaBlockBlur.jsx";
 import AppPizzaBlock from "../../components/AppPizzaBlock/AppPizzaBlock.jsx";
+import Pagination from "../../components/Pagination/Pagination.jsx";
 
 function Home({searchField}) {
   
@@ -18,6 +20,8 @@ function Home({searchField}) {
   const [sortType, setSortType] = useState(arrSortTypes[0]);
   const [toggleOpenPopup, setTogglesOpenPopup] = useState(false);
   const [radioOrder, setRadioOrder] = useState('asc');
+  const [currentPage, setCurrentPage] = useState(1);
+  const [limitPage, setLimitPage] = useState('');
   
   const category = categoryId ? ('category='+ categoryId) : '';
   const order = radioOrder === 'asc' ? 'asc' : 'desc';
@@ -28,10 +32,10 @@ function Home({searchField}) {
   
   useEffect(() => {
     setPizzaArray([]);
-    fetch(`https://62e38bb63c89b95396ca9aec.mockapi.io/items?${search}&${category}&sortBy=${sortType.sortProperty}&order=${order}`)
+    fetch(`https://62e38bb63c89b95396ca9aec.mockapi.io/items?page=${currentPage}&limit=${limitPage}&${search}&${category}&sortBy=${sortType.sortProperty}&order=${order}`)
       .then(r => r.json())
       .then(data => setPizzaArray(data))
-  }, [categoryId, sortType, radioOrder, searchField])
+  }, [categoryId, sortType, radioOrder, searchField, currentPage, limitPage])
   
   
   function onClickCategory(idx) {
@@ -51,6 +55,14 @@ function Home({searchField}) {
     setRadioOrder(e.target.value);
   }
   
+  function onPageChange(e) {
+    setCurrentPage(e.selected + 1)
+  }
+  
+  function onChangeLimitPage(e) {
+    setLimitPage(e.target.value)
+  }
+  
   
   return (
     <>
@@ -67,6 +79,7 @@ function Home({searchField}) {
           toggleSortHandle={toggleSortHandle}
           toggleOpenPopup={toggleOpenPopup}
           getActiveSortType={getActiveSortType}
+          onChangeLimitPage={onChangeLimitPage}
         />
       </div>
       <div className="pizza-list">
@@ -93,6 +106,9 @@ function Home({searchField}) {
         {/*  */}
         {/*}*/}
       </div>
+      <Pagination
+        onPageChange={onPageChange}
+      />
     </>
   );
 }

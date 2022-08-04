@@ -4,7 +4,7 @@ import {GrAscend, GrDescend} from "react-icons/gr";
 
 function AppSort(props) {
   
-  const {sortType, arrSortTypes, radioOrder, getRadioOrder, toggleSortHandle, toggleOpenPopup, getActiveSortType} = props;
+  const {sortType, arrSortTypes, radioOrder, getRadioOrder, toggleSortHandle, toggleOpenPopup, getActiveSortType, onChangeLimitPage} = props;
   
   return (
     <div className="sort">
@@ -37,6 +37,17 @@ function AppSort(props) {
             />
             <span ><GrDescend/></span>
           </label>
+        </div>
+        <div className="sort__label-select">
+            <select
+              onChange={onChangeLimitPage}
+            >
+              <option value="" selected>All</option>
+              <option value="2">2</option>
+              <option value="3">3</option>
+              <option value="4">4</option>
+              <option value="5">5</option>
+            </select>
         </div>
       </div>
       <div className={toggleOpenPopup ? 'sort__popup' : 'sort__popup invisible'}>

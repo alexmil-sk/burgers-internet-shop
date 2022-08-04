@@ -3,11 +3,11 @@
 .pizza-block {
   width: 250px;
   background: $neutral-50;
-  box-shadow: 0px 0px 15px 15px $gray-100;
+  box-shadow: 0 0 15px 15px $gray-100;
   margin: 40px 25px;
   padding: 10px;
   border-radius: 15px;
-  border: 1px solid $red-600;
+  outline: 1px solid $red-600;
 
   &__image {
     height: 250px;
@@ -84,11 +84,11 @@
       align-items: center;
       padding: 10px;
       margin-top: 10px;
-      color: $green-900;
-      background: $green-100;
+      color: $red-900;
+      background: $red-100;
       border-radius: 15px;
-      border: 1px solid $green-900;
-      box-shadow: inset 0 0 10px 2px $green-900;
+      border: 1px solid $red-900;
+      box-shadow: inset 0 0 10px 2px $red-900;
       cursor: pointer;
       text-transform: upperCase;
       font-size: 0.99rem;
@@ -107,7 +107,7 @@
         align-items: center;
         width: 50px;
         height: 50px;
-        background: $green-800;
+        background: $red-600;
         color: $neutral-50;
         padding: 2px;
         margin-left: 10px;
@@ -123,21 +123,26 @@
     }
 
     &-button:hover {
-      background: $green-800;
+      background: $red-500;
       color: $neutral-50;
 
     }
 
     &-button:hover span {
       background: $neutral-50;
-      color: $green-900;
-      border: 1px solid $green-700;
-      box-shadow: 0 0 5px 5px $green-400;
+      color: $red-900;
+      border: 1px solid $red-700;
+      box-shadow: 0 0 5px 5px $red-400;
 
       animation-name: bounce;
       animation-duration: 1500ms;
       animation-timing-function: ease-in-out;
       animation-iteration-count: infinite;
+    }
+    &-button:active {
+      box-shadow: inset 3px 3px 3px 3px $red-800;
+      background: $red-100;
+      color: $red-900;
     }
   }
 }

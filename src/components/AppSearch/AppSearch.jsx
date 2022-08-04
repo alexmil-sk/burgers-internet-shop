@@ -1,10 +1,14 @@
-import React from 'react';
+import React, {useContext} from 'react';
 import classes from './AppSearch.module.scss';
 import {BsSearch} from "react-icons/bs";
 import {GrClose} from "react-icons/gr";
+import {ContextSearchField} from "../../App.jsx";
 
 
-function AppSearch({searchField, setSearchField}) {
+function AppSearch() {
+  
+  const {searchField, setSearchField} = useContext(ContextSearchField);
+  
   return (
     <div className={classes.search}>
       <span className={classes.icon}>

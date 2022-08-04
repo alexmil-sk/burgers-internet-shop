@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react';
+import React, {useContext, useEffect, useState} from 'react';
 
 import AppCategories from "../../components/AppCategories/AppCategories.jsx";
 import AppSort from "../../components/AppSort/AppSort.jsx";
@@ -6,8 +6,11 @@ import AppSort from "../../components/AppSort/AppSort.jsx";
 import AppPizzaBlockBlur from "../../components/AppPizzaBlock/AppPizzaBlockBlur.jsx";
 import AppPizzaBlock from "../../components/AppPizzaBlock/AppPizzaBlock.jsx";
 import Pagination from "../../components/Pagination/Pagination.jsx";
+import {ContextSearchField} from "../../App.jsx";
 
-function Home({searchField}) {
+function Home() {
+  
+  const {searchField} = useContext(ContextSearchField)
   
   const arrSortTypes = [
     {name:'популярности', sortProperty: 'rating'},

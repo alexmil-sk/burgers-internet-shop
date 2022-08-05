@@ -8,6 +8,7 @@ import AppPizzaBlockBlur from "../../components/AppPizzaBlock/AppPizzaBlockBlur.
 import AppPizzaBlock from "../../components/AppPizzaBlock/AppPizzaBlock.jsx";
 import Pagination from "../../components/Pagination/Pagination.jsx";
 import {ContextSearchField} from "../../App.jsx";
+import AppSearch from "../../components/AppSearch/AppSearch.jsx";
 
 function Home() {
   
@@ -46,9 +47,9 @@ function Home() {
 
 //====================================================================
   
-  
   return (
     <>
+      <AppSearch/>
       <div className="info-panel">
         <AppCategories/>
         <AppSort/>
@@ -82,7 +83,6 @@ function Home() {
           ? <Pagination/>
           : null
       }
-    
     </>
   );
 }

@@ -1,17 +1,30 @@
-import React, {useContext, useRef} from 'react';
+import React, {useCallback, useContext, useRef, useState} from 'react';
 import classes from './AppSearch.module.scss';
 import {BsSearch} from "react-icons/bs";
 import {GrClose} from "react-icons/gr";
 import {ContextSearchField} from "../../App.jsx";
+import debounce from 'lodash.debounce';
 
 
 function AppSearch() {
   
+  const [localSearchField, setLocalSearchField] = useState('');
   const {searchField, setSearchField} = useContext(ContextSearchField);
   const inputRef = useRef(null);
   
   
+  const updateSearchFieldHandler = useCallback(
+    debounce((val) => {
+      setSearchField(val);
+    }, 1000), [])
+  
+  function onChangeInput(e) {
+    setLocalSearchField(e.target.value);
+    updateSearchFieldHandler(e.target.value);
+  }
+  
   function clearSearchField() {
+    setLocalSearchField('');
     setSearchField('');
     inputRef.current.focus();
   }
@@ -24,16 +37,16 @@ function AppSearch() {
       <input
         type="text"
         placeholder="Введите название пиццы..."
-        value={searchField}
+        value={localSearchField}
         ref={inputRef}
-        onChange={(e) => setSearchField(e.target.value)}
+        onChange={onChangeInput}
       />
       <div className={classes.form}>
         {
-          searchField ? <span
+          localSearchField ? <span
             onClick={clearSearchField}
             className={classes.clearInput}
-          ><GrClose /></span> : null
+          ><GrClose/></span> : null
         }
       </div>
     </div>

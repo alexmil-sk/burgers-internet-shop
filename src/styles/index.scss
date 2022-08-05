@@ -20,8 +20,7 @@ a {
   min-height: 100vh;
   margin: 15px auto;
   padding: 25px;
-  background: url('/src/assets/image/bg-site-burger.png') no-repeat center;
-  background-size: cover;
+  background: $gray-1000 url('/src/assets/image/bg-site-burger.png') no-repeat top center;
   border-radius: 25px;
 }
 

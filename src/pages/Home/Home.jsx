@@ -1,5 +1,6 @@
 import React, {useContext, useEffect, useState} from 'react';
 import {useSelector} from "react-redux";
+import axios from 'axios';
 import AppCategories from "../../components/AppCategories/AppCategories.jsx";
 import AppSort from "../../components/AppSort/AppSort.jsx";
 //import SceletonLoaderPizzaBlock from "../../components/SceletonLoaderPizzaBlock/SceletonLoaderPizzaBlock.jsx";
@@ -21,21 +22,36 @@ function Home() {
   
   const search = ''; //Использовал JS поиск по pizzaArray т.к. mpckapi.io не выполняет поиск по двум параметрам
   
-  //========== MOCK-API.IO===============================================
-  useEffect(() => {
-    setPizzaArray([]);
-    fetch(`https://62e38bb63c89b95396ca9aec.mockapi.io/items?page=${currentPage}&limit=${limitPage}&${search}&${category}&sortBy=${sortType.sortProperty}&order=${order}`)
-      .then(r => r.json())
-      .then(data => setPizzaArray(data))
-  }, [categoryId, sortType, radioOrder, searchField, currentPage, limitPage])
+  //========== FETCH MOCK-API.IO===============================================
+  //useEffect(() => {
+  //  setPizzaArray([]);
+  //  fetch(`https://62e38bb63c89b95396ca9aec.mockapi.io/items?page=${currentPage}&limit=${limitPage}&${search}&${category}&sortBy=${sortType.sortProperty}&order=${order}`)
+  //    .then(r => r.json())
+  //    .then(data => setPizzaArray(data))
+  //}, [categoryId, sortType, radioOrder, searchField, currentPage, limitPage])
   
   //====================================================================
+  
+  //========== AXIOS MOCK-API.IO===============================================
+  useEffect(() => {
+      axios.get(`https://62e38bb63c89b95396ca9aec.mockapi.io/items?page=${currentPage}&limit=${limitPage}&${search}&${category}&sortBy=${sortType.sortProperty}&order=${order}`, {
+          headers: {
+            'content-type': 'application/json'
+          }
+        })
+        .then(res => setPizzaArray(res.data))
+      
+    }, [categoryId, sortType, radioOrder, searchField, currentPage, limitPage]
+  )
+
+//====================================================================
+  
   
   return (
     <>
       <div className="info-panel">
-        <AppCategories />
-        <AppSort />
+        <AppCategories/>
+        <AppSort/>
       </div>
       <div className="pizza-list">
         
@@ -63,7 +79,7 @@ function Home() {
       </div>
       {
         limitPage
-          ? <Pagination />
+          ? <Pagination/>
           : null
       }
     

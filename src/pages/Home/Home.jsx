@@ -66,7 +66,6 @@ function Home() {
     setLimitPage(e.target.value)
   }
   
-  
   return (
     <>
       <div className="info-panel">

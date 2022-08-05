@@ -42,7 +42,7 @@ function AppSort(props) {
             <select
               onChange={onChangeLimitPage}
             >
-              <option value="" selected>All</option>
+              <option value="" >All</option>
               <option value="2">2</option>
               <option value="3">3</option>
               <option value="4">4</option>

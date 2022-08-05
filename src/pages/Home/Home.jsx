@@ -1,5 +1,5 @@
 import React, {useContext, useEffect, useState} from 'react';
-import {useSelector, useDispatch} from "react-redux";
+import {useSelector} from "react-redux";
 import AppCategories from "../../components/AppCategories/AppCategories.jsx";
 import AppSort from "../../components/AppSort/AppSort.jsx";
 //import SceletonLoaderPizzaBlock from "../../components/SceletonLoaderPizzaBlock/SceletonLoaderPizzaBlock.jsx";
@@ -7,19 +7,13 @@ import AppPizzaBlockBlur from "../../components/AppPizzaBlock/AppPizzaBlockBlur.
 import AppPizzaBlock from "../../components/AppPizzaBlock/AppPizzaBlock.jsx";
 import Pagination from "../../components/Pagination/Pagination.jsx";
 import {ContextSearchField} from "../../App.jsx";
-import {setCategoryId} from "../../redux-toolkit/slices/filtersSlice.js";
 
 function Home() {
   
   const {searchField} = useContext(ContextSearchField);
-  const dispatch = useDispatch();
-  const {categoryId, sortType} = useSelector(state => state.filter);
-  
+  const {categoryId, sortType, radioOrder, limitPage, currentPage} = useSelector(state => state.filter);
   
   const [pizzaArray, setPizzaArray] = useState([]);
-  const [radioOrder, setRadioOrder] = useState('asc');
-  const [currentPage, setCurrentPage] = useState(1);
-  const [limitPage, setLimitPage] = useState('');
   
   const category = categoryId ? ('category=' + categoryId) : '';
   const order = radioOrder === 'asc' ? 'asc' : 'desc';
@@ -37,34 +31,11 @@ function Home() {
   
   //====================================================================
   
-  function onClickCategory(idx) {
-    dispatch(setCategoryId(idx));
-  }
-  
-  function getRadioOrder(e) {
-    setRadioOrder(e.target.value);
-  }
-  
-  function onPageChange(e) {
-    setCurrentPage(e.selected + 1)
-  }
-  
-  function onChangeLimitPage(e) {
-    setLimitPage(e.target.value)
-  }
-  
   return (
     <>
       <div className="info-panel">
-        <AppCategories
-          categoryId={categoryId}
-          onClickCategory={onClickCategory}
-        />
-        <AppSort
-          radioOrder={radioOrder}
-          getRadioOrder={getRadioOrder}
-          onChangeLimitPage={onChangeLimitPage}
-        />
+        <AppCategories />
+        <AppSort />
       </div>
       <div className="pizza-list">
         
@@ -92,7 +63,7 @@ function Home() {
       </div>
       {
         limitPage
-          ? <Pagination onPageChange={onPageChange}/>
+          ? <Pagination />
           : null
       }
     

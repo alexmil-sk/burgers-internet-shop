@@ -2,13 +2,12 @@ import React, {useState} from 'react';
 import './AppSort.scss';
 import {GrAscend, GrDescend} from "react-icons/gr";
 import {useDispatch, useSelector} from "react-redux";
-import {setSortType} from '../../redux-toolkit/slices/filtersSlice.js';
+import {setSortType, setRadioOrder, setLimitPage} from '../../redux-toolkit/slices/filtersSlice.js';
 
-function AppSort(props) {
-  const {radioOrder, getRadioOrder, onChangeLimitPage} = props;
+function AppSort() {
   
   const dispatch = useDispatch();
-  const sortType = useSelector(state => state.filter.sortType);
+  const {sortType, radioOrder} = useSelector(state => state.filter);
   const [toggleOpenPopup, setTogglesOpenPopup] = useState(false);
   
   const arrSortTypes = [
@@ -24,6 +23,13 @@ function AppSort(props) {
   function getActiveSortType(sortObj) {
     dispatch(setSortType(sortObj));
     setTogglesOpenPopup(false);
+  }
+  
+  function getRadioOrder(e) {
+    dispatch(setRadioOrder(e.target.value));
+  }
+  function onChangeLimitPage(e) {
+    dispatch(setLimitPage(e.target.value));
   }
   
   return (

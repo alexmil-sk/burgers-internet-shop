@@ -2,9 +2,18 @@
 import React from 'react';
 import classes from './Pagination.module.scss';
 import ReactPaginate from "react-paginate";
+import {useDispatch} from "react-redux";
+import {setCurrentPage} from '../../redux-toolkit/slices/filtersSlice.js';
 
 
-function Pagination({onPageChange}) {
+
+function Pagination() {
+  const dispatch = useDispatch();
+  
+  function onPageChange(e) {
+    dispatch(setCurrentPage(e.selected + 1));
+  }
+  
   return (
     <div className={classes.root}>
       <ReactPaginate

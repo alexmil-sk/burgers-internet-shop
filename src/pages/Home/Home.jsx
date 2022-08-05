@@ -1,5 +1,5 @@
 import React, {useContext, useEffect, useState} from 'react';
-
+import {useSelector, useDispatch} from "react-redux";
 import AppCategories from "../../components/AppCategories/AppCategories.jsx";
 import AppSort from "../../components/AppSort/AppSort.jsx";
 //import SceletonLoaderPizzaBlock from "../../components/SceletonLoaderPizzaBlock/SceletonLoaderPizzaBlock.jsx";
@@ -7,10 +7,12 @@ import AppPizzaBlockBlur from "../../components/AppPizzaBlock/AppPizzaBlockBlur.
 import AppPizzaBlock from "../../components/AppPizzaBlock/AppPizzaBlock.jsx";
 import Pagination from "../../components/Pagination/Pagination.jsx";
 import {ContextSearchField} from "../../App.jsx";
+import {setCategoryId} from "../../redux-toolkit/slices/filtersSlice.js";
 
 function Home() {
   
-  const {searchField} = useContext(ContextSearchField)
+  const {searchField} = useContext(ContextSearchField);
+  const dispatch = useDispatch();
   
   const arrSortTypes = [
     {name:'популярности', sortProperty: 'rating'},
@@ -18,8 +20,9 @@ function Home() {
     {name: 'алфавиту', sortProperty: 'name'}
   ];
   
+  const categoryId = useSelector(state => state.filter.categoryId)
+  
   const [pizzaArray, setPizzaArray] = useState([]);
-  const [categoryId, setCategoryId] = useState(0);
   const [sortType, setSortType] = useState(arrSortTypes[0]);
   const [toggleOpenPopup, setTogglesOpenPopup] = useState(false);
   const [radioOrder, setRadioOrder] = useState('asc');
@@ -42,7 +45,7 @@ function Home() {
   
   
   function onClickCategory(idx) {
-    setCategoryId(idx);
+    dispatch(setCategoryId(idx));
   }
   
   function toggleSortHandle () {

@@ -13,29 +13,21 @@ function Home() {
   
   const {searchField} = useContext(ContextSearchField);
   const dispatch = useDispatch();
+  const {categoryId, sortType} = useSelector(state => state.filter);
   
-  const arrSortTypes = [
-    {name:'популярности', sortProperty: 'rating'},
-    {name: 'цене', sortProperty: 'price'},
-    {name: 'алфавиту', sortProperty: 'name'}
-  ];
-  
-  const categoryId = useSelector(state => state.filter.categoryId)
   
   const [pizzaArray, setPizzaArray] = useState([]);
-  const [sortType, setSortType] = useState(arrSortTypes[0]);
-  const [toggleOpenPopup, setTogglesOpenPopup] = useState(false);
   const [radioOrder, setRadioOrder] = useState('asc');
   const [currentPage, setCurrentPage] = useState(1);
   const [limitPage, setLimitPage] = useState('');
   
-  const category = categoryId ? ('category='+ categoryId) : '';
+  const category = categoryId ? ('category=' + categoryId) : '';
   const order = radioOrder === 'asc' ? 'asc' : 'desc';
   //const search = searchField ? ('search='+ searchField) : '';
   
   const search = ''; //Использовал JS поиск по pizzaArray т.к. mpckapi.io не выполняет поиск по двум параметрам
   
-  
+  //========== MOCK-API.IO===============================================
   useEffect(() => {
     setPizzaArray([]);
     fetch(`https://62e38bb63c89b95396ca9aec.mockapi.io/items?page=${currentPage}&limit=${limitPage}&${search}&${category}&sortBy=${sortType.sortProperty}&order=${order}`)
@@ -43,21 +35,13 @@ function Home() {
       .then(data => setPizzaArray(data))
   }, [categoryId, sortType, radioOrder, searchField, currentPage, limitPage])
   
+  //====================================================================
   
   function onClickCategory(idx) {
     dispatch(setCategoryId(idx));
   }
   
-  function toggleSortHandle () {
-    setTogglesOpenPopup(!toggleOpenPopup)
-  }
-  
-  function getActiveSortType (sortObj) {
-    setSortType(sortObj);
-    setTogglesOpenPopup(false);
-  }
-  
-  function getRadioOrder (e) {
+  function getRadioOrder(e) {
     setRadioOrder(e.target.value);
   }
   
@@ -77,13 +61,8 @@ function Home() {
           onClickCategory={onClickCategory}
         />
         <AppSort
-          sortType={sortType}
-          arrSortTypes={arrSortTypes}
           radioOrder={radioOrder}
           getRadioOrder={getRadioOrder}
-          toggleSortHandle={toggleSortHandle}
-          toggleOpenPopup={toggleOpenPopup}
-          getActiveSortType={getActiveSortType}
           onChangeLimitPage={onChangeLimitPage}
         />
       </div>
@@ -93,9 +72,9 @@ function Home() {
         {
           !pizzaArray.length
             ? [...new Array(12)].map((_, idx) => <AppPizzaBlockBlur key={idx}/>)
-            :  pizzaArray
+            : pizzaArray
               .filter(item => item.name.toLowerCase().includes(searchField.toLowerCase()))
-              .map(item => (<AppPizzaBlock {...item} key={item.id} /> ))
+              .map(item => (<AppPizzaBlock {...item} key={item.id}/>))
         }
         {/*Вариант со SCELETON ===========================*/}
         {/*{*/}
@@ -111,9 +90,12 @@ function Home() {
         {/*  */}
         {/*}*/}
       </div>
-      <Pagination
-        onPageChange={onPageChange}
-      />
+      {
+        limitPage
+          ? <Pagination onPageChange={onPageChange}/>
+          : null
+      }
+    
     </>
   );
 }

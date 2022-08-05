@@ -1,10 +1,30 @@
-import React from 'react';
+import React, {useState} from 'react';
 import './AppSort.scss';
 import {GrAscend, GrDescend} from "react-icons/gr";
+import {useDispatch, useSelector} from "react-redux";
+import {setSortType} from '../../redux-toolkit/slices/filtersSlice.js';
 
 function AppSort(props) {
+  const {radioOrder, getRadioOrder, onChangeLimitPage} = props;
   
-  const {sortType, arrSortTypes, radioOrder, getRadioOrder, toggleSortHandle, toggleOpenPopup, getActiveSortType, onChangeLimitPage} = props;
+  const dispatch = useDispatch();
+  const sortType = useSelector(state => state.filter.sortType);
+  const [toggleOpenPopup, setTogglesOpenPopup] = useState(false);
+  
+  const arrSortTypes = [
+    {name: 'популярности', sortProperty: 'rating'},
+    {name: 'цене', sortProperty: 'price'},
+    {name: 'алфавиту', sortProperty: 'name'}
+  ];
+  
+  function toggleSortHandle() {
+    setTogglesOpenPopup(!toggleOpenPopup)
+  }
+  
+  function getActiveSortType(sortObj) {
+    dispatch(setSortType(sortObj));
+    setTogglesOpenPopup(false);
+  }
   
   return (
     <div className="sort">
@@ -23,7 +43,7 @@ function AppSort(props) {
               name="radioOrder"
               value="desc"
             />
-            <span ><GrAscend/></span>
+            <span><GrAscend/></span>
           </label>
         </div>
         <div className="sort__label-radio_desc">
@@ -35,19 +55,19 @@ function AppSort(props) {
               value="asc"
               checked={radioOrder === 'asc'}
             />
-            <span ><GrDescend/></span>
+            <span><GrDescend/></span>
           </label>
         </div>
         <div className="sort__label-select">
-            <select
-              onChange={onChangeLimitPage}
-            >
-              <option value="" >All</option>
-              <option value="2">2</option>
-              <option value="3">3</option>
-              <option value="4">4</option>
-              <option value="5">5</option>
-            </select>
+          <select
+            onChange={onChangeLimitPage}
+          >
+            <option value="">All</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+          </select>
         </div>
       </div>
       <div className={toggleOpenPopup ? 'sort__popup' : 'sort__popup invisible'}>

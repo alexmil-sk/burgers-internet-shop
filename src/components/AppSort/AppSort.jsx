@@ -14,7 +14,7 @@ export const arrSortTypes = [
 function AppSort() {
   
   const dispatch = useDispatch();
-  const {sortType, radioOrder} = useSelector(state => state.filter);
+  const {sortType, radioOrder, limitPage} = useSelector(state => state.filter);
   const [toggleOpenPopup, setTogglesOpenPopup] = useState(false);
   
   
@@ -70,6 +70,7 @@ function AppSort() {
         <div className="sort__label-select">
           <select
             onChange={onChangeLimitPage}
+            value={limitPage}
           >
             <option value="">All</option>
             <option value="2">2</option>

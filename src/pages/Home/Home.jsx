@@ -45,14 +45,15 @@ function Home() {
   }, [])
   
   useEffect(() => {
-    const queryString = qs.stringify({
-      sortBy: sortType.sortProperty,
-      category:categoryId,
-      page: currentPage,
-      order: radioOrder,
-      limit: limitPage
-    });
-    navigate(`?${queryString}`)
+      const queryString = qs.stringify({
+        sortBy: sortType.sortProperty,
+        category:categoryId,
+        page: currentPage,
+        order: radioOrder,
+        limit: limitPage
+      });
+      navigate(`?${queryString}`)
+    
   }, [categoryId, sortType, radioOrder, currentPage, limitPage])
   
   //========== FETCH MOCK-API.IO===============================================

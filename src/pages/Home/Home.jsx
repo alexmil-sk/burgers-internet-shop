@@ -1,5 +1,6 @@
-import React, {useContext, useEffect, useState} from 'react';
-import {useSelector} from "react-redux";
+import React, {useContext, useEffect, useRef, useState} from 'react';
+import {useDispatch, useSelector} from "react-redux";
+import {useNavigate, useLocation} from "react-router-dom";
 import axios from 'axios';
 import AppCategories from "../../components/AppCategories/AppCategories.jsx";
 import AppSort from "../../components/AppSort/AppSort.jsx";
@@ -9,8 +10,16 @@ import AppPizzaBlock from "../../components/AppPizzaBlock/AppPizzaBlock.jsx";
 import Pagination from "../../components/Pagination/Pagination.jsx";
 import {ContextSearchField} from "../../App.jsx";
 import AppSearch from "../../components/AppSearch/AppSearch.jsx";
+import qs from 'qs';
+import {setFilters} from "../../redux-toolkit/slices/filtersSlice.js";
 
 function Home() {
+  
+  let navigate = useNavigate();
+  let location = useLocation();
+  const dispatch = useDispatch();
+  
+  const isHaveSearchParams = useRef(false);
   
   const {searchField} = useContext(ContextSearchField);
   const {categoryId, sortType, radioOrder, limitPage, currentPage} = useSelector(state => state.filter);
@@ -22,6 +31,29 @@ function Home() {
   //const search = searchField ? ('search='+ searchField) : '';
   
   const search = ''; //Использовал JS поиск по pizzaArray т.к. mpckapi.io не выполняет поиск по двум параметрам
+  
+  
+  
+  useEffect(() => {
+    if (location.search) {
+      const locationParams = qs.parse(location.search.substring(1));
+   
+      dispatch(setFilters({...locationParams}));
+  
+      isHaveSearchParams.current = true;
+    }
+  }, [])
+  
+  useEffect(() => {
+    const queryString = qs.stringify({
+      sortBy: sortType.sortProperty,
+      category:categoryId,
+      page: currentPage,
+      order: radioOrder,
+      limit: limitPage
+    });
+    navigate(`?${queryString}`)
+  }, [categoryId, sortType, radioOrder, currentPage, limitPage])
   
   //========== FETCH MOCK-API.IO===============================================
   //useEffect(() => {
@@ -35,17 +67,24 @@ function Home() {
   
   //========== AXIOS MOCK-API.IO===============================================
   useEffect(() => {
-      axios.get(`https://62e38bb63c89b95396ca9aec.mockapi.io/items?page=${currentPage}&limit=${limitPage}&${search}&${category}&sortBy=${sortType.sortProperty}&order=${order}`, {
-          headers: {
-            'content-type': 'application/json'
-          }
-        })
-        .then(res => setPizzaArray(res.data))
-      
+    if (!isHaveSearchParams.current) {
+      axiosQuery();
+    }
+    isHaveSearchParams.current = false;
     }, [categoryId, sortType, radioOrder, searchField, currentPage, limitPage]
   )
 
 //====================================================================
+  
+  function axiosQuery() {
+    axios.get(`https://62e38bb63c89b95396ca9aec.mockapi.io/items?page=${currentPage}&limit=${limitPage}&${search}&${category}&sortBy=${sortType.sortProperty}&order=${order}`, {
+        headers: {
+          'content-type': 'application/json'
+        }
+      })
+      .then(res => setPizzaArray(res.data))
+  }
+  
   
   return (
     <>

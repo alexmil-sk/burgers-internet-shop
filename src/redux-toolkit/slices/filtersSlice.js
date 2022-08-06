@@ -26,10 +26,18 @@ export const filtersSlice = createSlice({
     },
     setCurrentPage: (state, action) => {
       state.currentPage = action.payload;
+    },
+    setFilters: (state, action) => {
+      state.currentPage = Number(action.payload.page);
+      state.sortType.sortProperty = action.payload.sortBy;
+      state.categoryId = Number(action.payload.category);
+      state.radioOrder = action.payload.order;
+      state.limitPage = action.payload.limit;
     }
   },
 })
 
-export const {setCategoryId, setSortType, setRadioOrder, setLimitPage, setCurrentPage} = filtersSlice.actions
+
+export const {setCategoryId, setSortType, setRadioOrder, setLimitPage, setCurrentPage, setFilters} = filtersSlice.actions
 
 export default filtersSlice.reducer

@@ -39,10 +39,12 @@
       input {
         margin-right: 5px;
         margin-left: 11px;
+        cursor: pointer;
       }
 
       span {
         font-size: 1.4rem;
+        cursor: pointer;
       }
     }
 
@@ -51,14 +53,17 @@
       justify-self: right;
       margin-top: 5px;
       margin-right: 5px;
+      cursor: pointer;
 
       input {
         margin-right: 3px;
         margin-bottom: 12px;
+        cursor: pointer;
       }
 
       span {
         font-size: 1.4rem;
+        cursor: pointer;
       }
     }
 
@@ -77,6 +82,7 @@
       text-align: center;
 
       transition: all ease-in-out 200ms;
+
       &::-ms-expand {
         display: none;
       }
@@ -84,6 +90,7 @@
       &:hover {
         border: 2px solid $gray-600;
       }
+
       &:focus {
         border: 2px solid $gray-400;
       }

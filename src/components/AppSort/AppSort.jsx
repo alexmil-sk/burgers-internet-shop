@@ -4,17 +4,19 @@ import {GrAscend, GrDescend} from "react-icons/gr";
 import {useDispatch, useSelector} from "react-redux";
 import {setSortType, setRadioOrder, setLimitPage} from '../../redux-toolkit/slices/filtersSlice.js';
 
+export const arrSortTypes = [
+  {name: 'популярности', sortProperty: 'rating'},
+  {name: 'цене', sortProperty: 'price'},
+  {name: 'алфавиту', sortProperty: 'name'}
+];
+
+
 function AppSort() {
   
   const dispatch = useDispatch();
   const {sortType, radioOrder} = useSelector(state => state.filter);
   const [toggleOpenPopup, setTogglesOpenPopup] = useState(false);
   
-  const arrSortTypes = [
-    {name: 'популярности', sortProperty: 'rating'},
-    {name: 'цене', sortProperty: 'price'},
-    {name: 'алфавиту', sortProperty: 'name'}
-  ];
   
   function toggleSortHandle() {
     setTogglesOpenPopup(!toggleOpenPopup)
@@ -48,6 +50,7 @@ function AppSort() {
               type="radio"
               name="radioOrder"
               value="desc"
+              checked={radioOrder === 'desc'}
             />
             <span><GrAscend/></span>
           </label>

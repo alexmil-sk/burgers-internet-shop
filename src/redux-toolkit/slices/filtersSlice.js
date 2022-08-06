@@ -4,7 +4,7 @@ const initialState = {
   categoryId: 0,
   sortType: {name: 'популярности', sortProperty: 'rating'},
   radioOrder: 'asc',
-  limitPage: '',
+  limitPage: null,
   currentPage: 1,
 }
 

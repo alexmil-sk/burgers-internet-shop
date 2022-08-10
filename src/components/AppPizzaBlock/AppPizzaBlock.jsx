@@ -1,13 +1,31 @@
 import React, {useState} from 'react';
 import './AppPizzaBlock.scss';
+import {useDispatch, useSelector} from "react-redux";
+import {addItemBurger} from "../../redux-toolkit/slices/cartSlice.js";
+
+const pizzaTypesArray = ['тонкое', 'традиционное'];
+
 
 function AppPizzaBlock({...item}) {
-  const {name, price, imageUrl, sizes, types} = item;
+  const {id, name, price, imageUrl, sizes, types} = item;
   
-  const pizzaTypesArray = ['тонкое', 'традиционное'];
+  const dispatch = useDispatch();
+  const isBurgerInCart = useSelector(state => state.cart.items.find(el => el.id === id));
+  
+  
+  const count = isBurgerInCart ? isBurgerInCart.count : 0;
   
   const [activeSize, setActiveSize] = useState(0);
   const [activeType, setActiveType] = useState(0);
+  
+  function onClickAdd () {
+    const emptyItem = {
+      ...item,
+      type: pizzaTypesArray[activeType],
+      size: sizes[activeSize],
+    }
+    dispatch(addItemBurger(emptyItem));
+  }
   
   
   return (
@@ -15,7 +33,7 @@ function AppPizzaBlock({...item}) {
       <div className="pizza-block__image">
         <img src={imageUrl} alt="pizza-main"/>
       </div>
-      <h4 className="pizza-block__title">{name}</h4>
+      <h4 className="pizza-block__title">{name}&nbsp;(#{id})</h4>
       <div className="pizza-block__selector">
         <ul className="pizza-block__selector-type">
           {types.map((type, idx) =>
@@ -39,10 +57,12 @@ function AppPizzaBlock({...item}) {
       <div className="pizza-block__bottom">
         <div className="pizza-block__price">от <strong>{price}</strong>&nbsp;руб.</div>
         <button
-          onClick={() => console.log('count+')}
+          onClick={onClickAdd}
           className="pizza-block__bottom-button"
         >Добавить
-          <span className="pizza-block__bottom-button-count">0</span>
+          {
+            isBurgerInCart &&
+            <span className="pizza-block__bottom-button-count">{count}</span>}
         </button>
       </div>
     </div>

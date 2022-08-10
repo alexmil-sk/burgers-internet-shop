@@ -61,6 +61,12 @@
         font-weight: 400;
       }
     }
+    .MinusCircleDisabled {
+      opacity: .2;
+      cursor: not-allowed;
+      font-size: 1.7rem;
+      transform: scale(1);
+    }
   }
   .cartItemPrice {
     color: $gray-900;

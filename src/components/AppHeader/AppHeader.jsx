@@ -3,10 +3,19 @@ import './AppHeader.scss';
 import pizzaMain from '../../assets/image/pizza-main.png';
 import { BsCart4 } from "react-icons/bs";
 import {Link} from "react-router-dom";
+import {useSelector} from "react-redux";
 
 
 
 function AppHeader() {
+  
+  const {items, totalPrice} = useSelector(state => state.cart);
+  const totalCartCount = items.reduce((acc, item) => {
+    return acc + item.count
+  }, 0);
+  
+  
+  
   return (
     <div className="header">
       <Link to="/">
@@ -20,11 +29,11 @@ function AppHeader() {
       <Link to="cart" className="header__a">
         <div className="header__cart">
           <div className="header__cart-sum">
-            <span>{500}&nbsp; &#8381;</span>
+            <span>{totalPrice}&nbsp; &#8381;</span>
           </div>
           <div className="header__cart-icon">
             <BsCart4 />
-            <span>3</span>
+            <span>{totalCartCount}</span>
           </div>
         </div>
       </Link>

@@ -17,7 +17,6 @@ function AppSort() {
   const {sortType, radioOrder, limitPage} = useSelector(state => state.filter);
   const [toggleOpenPopup, setTogglesOpenPopup] = useState(false);
   
-  
   function toggleSortHandle() {
     setTogglesOpenPopup(!toggleOpenPopup)
   }

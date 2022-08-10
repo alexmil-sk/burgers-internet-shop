@@ -7,9 +7,16 @@
     justify-content: space-between;
     align-items: end;
     padding: 0 15px;
-    .BsCart4 {
-      font-size: 2rem;
-      margin-right: 20px;
+      .BsCart4 {
+        font-size: 2rem;
+        margin-right: 20px;
+      }
+    .cartClearBtn {
+      display: flex;
+      width: 160px;
+      justify-content: space-between;
+      align-items: center;
+      cursor: pointer;
     }
   }
   .cartContent {
@@ -19,6 +26,7 @@
     border-radius: 15px;
     padding: 15px;
     margin-top: 30px;
+    color: $neutral-400;
 
   }
   .cartBottom {

@@ -26,7 +26,7 @@ function AppCartItem({item}) {
         </div>
         <div className={classes.cartItemTitle}>
           <p>{name}</p>
-          <span>{type}&nbsp;тесто, {size}&nbsp;см</span>
+          <span>{type}&nbsp;flour, {size}&nbsp;cm</span>
         </div>
         <div className={classes.cartItemCount}>
             <AiOutlineMinusCircle

@@ -14,6 +14,7 @@ function AppHeader() {
     return acc + item.count
   }, 0);
   
+  console.log();
   
   
   return (

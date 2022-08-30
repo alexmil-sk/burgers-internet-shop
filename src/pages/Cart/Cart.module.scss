@@ -14,7 +14,8 @@
     .cartClearBtn {
       display: flex;
       width: 160px;
-      justify-content: space-between;
+      justify-content: end;
+      gap: 8px;
       align-items: center;
       cursor: pointer;
     }
@@ -22,7 +23,7 @@
   .cartContent {
     width: 100%;
     min-height: 100px;
-    background: $neutral-50;
+    background: $neutral-200;
     border-radius: 15px;
     padding: 15px;
     margin-top: 30px;
@@ -32,7 +33,7 @@
   .cartBottom {
     width: 100%;
     min-height: 100px;
-    background: $neutral-50;
+    background: $neutral-200;
     border-radius: 15px;
     padding: 15px;
     margin-top: 30px;
@@ -45,7 +46,10 @@
       border: 1px solid $gray-300;
       border-radius: 20px;
       color: $gray-800;
-
+      background: $neutral-50;
+      & :nth-child(2) strong {
+        color: $red-600;
+      }
     }
     .cartBottomBtn {
       display: flex;
@@ -61,6 +65,7 @@
         border-radius: 30px;
         padding: 10px 15px;
         color: $gray-600;
+        background: $neutral-50;
 
         transition: all ease-in-out 500ms;
         &:hover {
@@ -80,6 +85,7 @@
         border: 1px solid $red-600;
         color: $red-600;
         cursor: pointer;
+        background: $neutral-50;
 
         transition: all ease-in-out 500ms;
         &:hover {

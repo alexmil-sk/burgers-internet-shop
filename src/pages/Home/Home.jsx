@@ -12,6 +12,7 @@ import {ContextSearchField} from "../../App.jsx";
 import AppSearch from "../../components/AppSearch/AppSearch.jsx";
 import qs from 'qs';
 import {setFilters} from "../../redux-toolkit/slices/filtersSlice.js";
+import {setItemsBurgers} from "../../redux-toolkit/slices/burgersSlice.js";
 
 function Home() {
   
@@ -22,9 +23,11 @@ function Home() {
   const isHaveSearchParams = useRef(false);
   
   const {searchField} = useContext(ContextSearchField);
+  
+  const {itemsBurgers} = useSelector(state => state.burgers)
   const {categoryId, sortType, radioOrder, limitPage, currentPage} = useSelector(state => state.filter);
   
-  const [pizzaArray, setPizzaArray] = useState([]);
+  const [isLoading, setIsLoading] = useState(false);
   
   const category = categoryId ? ('category=' + categoryId) : '';
   const order = radioOrder === 'asc' ? 'asc' : 'desc';
@@ -33,26 +36,25 @@ function Home() {
   const search = ''; //Использовал JS поиск по pizzaArray т.к. mpckapi.io не выполняет поиск по двум параметрам
   
   
-  
   useEffect(() => {
     if (location.search) {
       const locationParams = qs.parse(location.search.substring(1));
-   
+      
       dispatch(setFilters({...locationParams}));
-  
+      
       isHaveSearchParams.current = true;
     }
   }, [])
   
   useEffect(() => {
-      const queryString = qs.stringify({
-        sortBy: sortType.sortProperty,
-        category:categoryId,
-        page: currentPage,
-        order: radioOrder,
-        limit: limitPage
-      });
-      navigate(`?${queryString}`)
+    const queryString = qs.stringify({
+      sortBy: sortType.sortProperty,
+      category: categoryId,
+      page: currentPage,
+      order: radioOrder,
+      limit: limitPage
+    });
+    navigate(`?${queryString}`)
     
   }, [categoryId, sortType, radioOrder, currentPage, limitPage])
   
@@ -68,24 +70,48 @@ function Home() {
   
   //========== AXIOS MOCK-API.IO===============================================
   useEffect(() => {
-    if (!isHaveSearchParams.current) {
-      axiosQuery();
-    }
-    isHaveSearchParams.current = false;
+      if (!isHaveSearchParams.current) {
+        axiosQuery().then(r => r);
+      }
+      isHaveSearchParams.current = false;
     }, [categoryId, sortType, radioOrder, searchField, currentPage, limitPage]
   )
 
 //====================================================================
   
-  function axiosQuery() {
-    axios.get(`https://62e38bb63c89b95396ca9aec.mockapi.io/items?page=${currentPage}&limit=${limitPage}&${search}&${category}&sortBy=${sortType.sortProperty}&order=${order}`, {
+  async function axiosQuery() {
+    setIsLoading(true);
+    
+    //СИНХРОННЫЙ ЗАПРОС =====================================================
+    
+    // axios.get(`https://62e38bb63c89b95396ca9aec.mockapi.io/burger_shop?page=${currentPage}&limit=${limitPage}&${search}&${category}&sortBy=${sortType.sortProperty}&order=${order}`, {
+    //     headers: {
+    //       'content-type': 'application/json'
+    //     }
+    //   })
+    //   .then(res => {
+    //     setPizzaArray(res.data);
+    //     setIsLoading(false)
+    //   })
+    //   .catch(error => {
+    //     console.log('ERROR: ', error);
+    //     setIsLoading(false)
+    //   })
+    
+    //AСИНХРОННЫЙ ЗАПРОС =====================================================
+    try {
+      const {data} = await axios.get(`https://62e38bb63c89b95396ca9aec.mockapi.io/burger_shop?page=${currentPage}&limit=${limitPage}&${search}&${category}&sortBy=${sortType.sortProperty}&order=${order}`, {
         headers: {
           'content-type': 'application/json'
         }
       })
-      .then(res => setPizzaArray(res.data))
+      dispatch(setItemsBurgers(data))
+    } catch (error) {
+      console.log('ERROR: ', error.message);
+    } finally {
+      setIsLoading(false);
+    }
   }
-  
   
   return (
     <>
@@ -98,15 +124,15 @@ function Home() {
         
         {/*Вариант с РАЗМЫТИЕМ ===========================*/}
         {
-          !pizzaArray.length
+          isLoading
             ? [...new Array(12)].map((_, idx) => <AppPizzaBlockBlur key={idx}/>)
-            : pizzaArray
+            : itemsBurgers
               .filter(item => item.name.toLowerCase().includes(searchField.toLowerCase()))
               .map(item => (<AppPizzaBlock {...item} key={item.id}/>))
         }
         {/*Вариант со SCELETON ===========================*/}
         {/*{*/}
-        {/*  !pizzaArray.length*/}
+        {/*  isLoading*/}
         {/*    ? [...new Array(6)].map((_, idx) => <SceletonLoaderPizzaBlock key={idx}/>)*/}
         {/*    : pizzaArray.map(item =>*/}
         {/*      (<AppPizzaBlock*/}

@@ -10,21 +10,20 @@ function AppPizzaBlock({...item}) {
   const {id, name, price, imageUrl, sizes, types} = item;
   
   const dispatch = useDispatch();
-  const isBurgerInCart = useSelector(state => state.cart.items.find(el => el.id === id));
+  const totalBurgersInCart = useSelector(state => state.cart.items.find(el => el.id === id));
   
-  
-  const count = isBurgerInCart ? isBurgerInCart.count : 0;
+  const count = totalBurgersInCart ? totalBurgersInCart.count : null;
   
   const [activeSize, setActiveSize] = useState(0);
   const [activeType, setActiveType] = useState(0);
   
   function onClickAdd () {
-    const emptyItem = {
+    const newItem = {
       ...item,
       type: pizzaTypesArray[activeType],
       size: sizes[activeSize],
     }
-    dispatch(addItemBurger(emptyItem));
+    dispatch(addItemBurger(newItem));
   }
   
   
@@ -59,9 +58,9 @@ function AppPizzaBlock({...item}) {
         <button
           onClick={onClickAdd}
           className="pizza-block__bottom-button"
-        >Добавить
+        >add to cart
           {
-            isBurgerInCart &&
+            totalBurgersInCart &&
             <span className="pizza-block__bottom-button-count">{count}</span>}
         </button>
       </div>

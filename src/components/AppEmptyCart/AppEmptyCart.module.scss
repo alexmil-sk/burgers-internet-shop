@@ -1,0 +1,28 @@
+@import '../../styles/_variables.scss';
+
+.AppEmptyCart {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  text-align: center;
+  background: $neutral-200;
+  border-radius: 13px;
+  img {
+    border-radius: 13px;
+  }
+  &Title {
+    display: flex;
+    justify-content: center;
+    position: relative;
+    width: 100%;
+    h2 {
+      position: absolute;
+      top: 60px;
+      color: $orange-500;
+      font-size: 2rem;
+      font-weight: 900;
+      text-transform: uppercase;
+      letter-spacing: .2rem;
+    }
+  }
+}

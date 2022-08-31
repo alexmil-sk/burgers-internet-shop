@@ -31,7 +31,7 @@ function Home() {
   const category = categoryId ? ('category=' + categoryId) : '';
   const order = radioOrder === 'asc' ? 'asc' : 'desc';
   
-  const search = ''; //Переменная для передачи пустого параметра в строку запроса. Использовал JS поиск по pizzaArray т.к. mpckapi.io не выполняет поиск по двум параметрам
+  
   
   
   useEffect(() => {
@@ -102,7 +102,6 @@ function Home() {
       sortType,
       limitPage,
       currentPage,
-      search
     }))
   }
   

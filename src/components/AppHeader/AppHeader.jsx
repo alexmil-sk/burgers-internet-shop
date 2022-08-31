@@ -4,12 +4,13 @@ import pizzaMain from '../../assets/image/pizza-main.png';
 import { BsCart4 } from "react-icons/bs";
 import {Link} from "react-router-dom";
 import {useSelector} from "react-redux";
+import {cartSelector} from "../../redux-toolkit/slices/cartSlice.js";
 
 
 
 function AppHeader() {
   
-  const {items, totalPrice} = useSelector(state => state.cart);
+  const {items, totalPrice} = useSelector(cartSelector);
   const totalCartCount = items.reduce((acc, item) => {
     return acc + item.count
   }, 0);

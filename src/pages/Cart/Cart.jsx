@@ -6,14 +6,14 @@ import {RiDeleteBin6Line} from "react-icons/ri";
 import {ImList2} from "react-icons/im";
 import AppCartItem from "../../components/AppCartItem/AppCartItem.jsx";
 import {Link} from "react-router-dom";
-import {clearCartItemsBurger} from "../../redux-toolkit/slices/cartSlice.js";
+import {cartSelector, clearCartItemsBurger} from "../../redux-toolkit/slices/cartSlice.js";
 import AppEmptyCart from "../../components/AppEmptyCart/AppEmptyCart.jsx";
 
 
 function Cart() {
   
   const dispatch = useDispatch();
-  const {items, totalPrice} = useSelector(state => state.cart);
+  const {items, totalPrice} = useSelector(cartSelector);
   const totalCartCount = items.reduce((acc, item) => {
     return acc + item.count
   }, 0);

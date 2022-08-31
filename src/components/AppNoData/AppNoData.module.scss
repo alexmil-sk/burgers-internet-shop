@@ -1,0 +1,30 @@
+@import '../../styles/_variables.scss';
+
+.AppNoData {
+  margin-top: 25px;
+  grid-column: 1/4;
+  border-radius: 13px;
+  box-shadow: 0 0 10px 10px #f7f7f7;
+
+}
+img {
+  border-radius: 13px;
+  max-width: 100%;
+
+}
+.AppNoDataTitle {
+  display: flex;
+  justify-content: center;
+  position: relative;
+  width: 100%;
+
+}
+h2 {
+  position: absolute;
+  top: 60px;
+  color: $neutral-50;
+  font-size: 1.7rem;
+  font-weight: 900;
+  text-transform: uppercase;
+  letter-spacing: .2rem;
+}

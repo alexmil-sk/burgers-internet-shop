@@ -2,7 +2,7 @@ import React, {useState} from 'react';
 import './AppSort.scss';
 import {GrAscend, GrDescend} from "react-icons/gr";
 import {useDispatch, useSelector} from "react-redux";
-import {setSortType, setRadioOrder, setLimitPage} from '../../redux-toolkit/slices/filtersSlice.js';
+import {setSortType, setRadioOrder, setLimitPage, filterSelector} from '../../redux-toolkit/slices/filtersSlice.js';
 
 export const arrSortTypes = [
   {name: 'популярности', sortProperty: 'rating'},
@@ -14,7 +14,7 @@ export const arrSortTypes = [
 function AppSort() {
   
   const dispatch = useDispatch();
-  const {sortType, radioOrder, limitPage} = useSelector(state => state.filter);
+  const {sortType, radioOrder, limitPage} = useSelector(filterSelector);
   const [toggleOpenPopup, setTogglesOpenPopup] = useState(false);
   
   function toggleSortHandle() {

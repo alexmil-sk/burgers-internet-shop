@@ -1,7 +1,7 @@
 import React, {useState} from 'react';
 import './AppPizzaBlock.scss';
 import {useDispatch, useSelector} from "react-redux";
-import {addItemBurger} from "../../redux-toolkit/slices/cartSlice.js";
+import {addItemBurger, cartItemsSelector} from "../../redux-toolkit/slices/cartSlice.js";
 
 const pizzaTypesArray = ['тонкое', 'традиционное'];
 
@@ -10,7 +10,7 @@ function AppPizzaBlock({...item}) {
   const {id, name, price, imageUrl, sizes, types} = item;
   
   const dispatch = useDispatch();
-  const totalBurgersInCart = useSelector(state => state.cart.items.find(el => el.id === id));
+  const totalBurgersInCart = useSelector(cartItemsSelector(id));
   
   const count = totalBurgersInCart ? totalBurgersInCart.count : null;
   

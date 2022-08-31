@@ -1,7 +1,6 @@
-import React, {useContext, useEffect, useRef, useState} from 'react';
+import React, {useContext, useEffect, useRef} from 'react';
 import {useDispatch, useSelector} from "react-redux";
 import {useNavigate, useLocation} from "react-router-dom";
-import axios from 'axios';
 import AppCategories from "../../components/AppCategories/AppCategories.jsx";
 import AppSort from "../../components/AppSort/AppSort.jsx";
 //import SceletonLoaderPizzaBlock from "../../components/SceletonLoaderPizzaBlock/SceletonLoaderPizzaBlock.jsx";
@@ -11,8 +10,9 @@ import Pagination from "../../components/Pagination/Pagination.jsx";
 import {ContextSearchField} from "../../App.jsx";
 import AppSearch from "../../components/AppSearch/AppSearch.jsx";
 import qs from 'qs';
-import {setFilters} from "../../redux-toolkit/slices/filtersSlice.js";
-import {setItemsBurgers} from "../../redux-toolkit/slices/burgersSlice.js";
+import {filterSelector, setFilters} from "../../redux-toolkit/slices/filtersSlice.js";
+import {burgersSelector, fetchBurgers} from "../../redux-toolkit/slices/burgersSlice.js";
+import AppNoData from "../../components/AppNoData/AppNoData.jsx";
 
 function Home() {
   
@@ -24,14 +24,13 @@ function Home() {
   
   const {searchField} = useContext(ContextSearchField);
   
-  const {itemsBurgers} = useSelector(state => state.burgers)
-  const {categoryId, sortType, radioOrder, limitPage, currentPage} = useSelector(state => state.filter);
+  const {itemsBurgers, status} = useSelector(burgersSelector)
   
-  const [isLoading, setIsLoading] = useState(false);
+  const {categoryId, sortType, radioOrder, limitPage, currentPage} = useSelector(filterSelector);
+  
   
   const category = categoryId ? ('category=' + categoryId) : '';
   const order = radioOrder === 'asc' ? 'asc' : 'desc';
-  //const search = searchField ? ('search='+ searchField) : '';
   
   const search = ''; //Использовал JS поиск по pizzaArray т.к. mpckapi.io не выполняет поиск по двум параметрам
   
@@ -80,7 +79,6 @@ function Home() {
 //====================================================================
   
   async function axiosQuery() {
-    setIsLoading(true);
     
     //СИНХРОННЫЙ ЗАПРОС =====================================================
     
@@ -99,18 +97,14 @@ function Home() {
     //   })
     
     //AСИНХРОННЫЙ ЗАПРОС =====================================================
-    try {
-      const {data} = await axios.get(`https://62e38bb63c89b95396ca9aec.mockapi.io/burger_shop?page=${currentPage}&limit=${limitPage}&${search}&${category}&sortBy=${sortType.sortProperty}&order=${order}`, {
-        headers: {
-          'content-type': 'application/json'
-        }
-      })
-      dispatch(setItemsBurgers(data))
-    } catch (error) {
-      console.log('ERROR: ', error.message);
-    } finally {
-      setIsLoading(false);
-    }
+    dispatch(fetchBurgers({
+      category,
+      order,
+      sortType,
+      limitPage,
+      currentPage,
+      search
+    }))
   }
   
   return (
@@ -124,12 +118,15 @@ function Home() {
         
         {/*Вариант с РАЗМЫТИЕМ ===========================*/}
         {
-          isLoading
-            ? [...new Array(12)].map((_, idx) => <AppPizzaBlockBlur key={idx}/>)
-            : itemsBurgers
-              .filter(item => item.name.toLowerCase().includes(searchField.toLowerCase()))
-              .map(item => (<AppPizzaBlock {...item} key={item.id}/>))
+          status === 'error'
+            ? (<AppNoData/>)
+            : status === 'loading'
+              ? [...new Array(12)].map((_, idx) => <AppPizzaBlockBlur key={idx}/>)
+              : itemsBurgers
+                .filter(item => item.name.toLowerCase().includes(searchField.toLowerCase()))
+                .map(item => (<AppPizzaBlock {...item} key={item.id}/>))
         }
+        
         {/*Вариант со SCELETON ===========================*/}
         {/*{*/}
         {/*  isLoading*/}
@@ -145,9 +142,9 @@ function Home() {
         {/*}*/}
       </div>
       {
-        limitPage
-          ? <Pagination/>
-          : null
+        status === 'error'
+          ? null
+          : limitPage ? <Pagination/> : null
       }
     </>
   );

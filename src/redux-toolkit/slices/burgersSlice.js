@@ -3,8 +3,8 @@ import axios from "axios";
 
 export const fetchBurgers = createAsyncThunk(
   'burgers/fetchBurgersStatus',
-  async (args) => {
-    const {category, order, sortType, limitPage, currentPage, search} = args;
+  async ({category, order, sortType, limitPage, currentPage, search}) => {
+    
     const {data} = await axios.get(`https://62e38bb63c89b95396ca9aec.mockapi.io/burger_shop?page=${currentPage}&limit=${limitPage}&${search}&${category}&sortBy=${sortType.sortProperty}&order=${order}`)
     
     return data;

@@ -1,18 +1,17 @@
-import React, {useContext, useEffect, useRef} from 'react';
+import React, {useEffect, useRef} from 'react';
 import {useDispatch, useSelector} from "react-redux";
 import {useNavigate, useLocation} from "react-router-dom";
 import AppCategories from "../../components/AppCategories/AppCategories.jsx";
 import AppSort from "../../components/AppSort/AppSort.jsx";
-//import SceletonLoaderPizzaBlock from "../../components/SceletonLoaderPizzaBlock/SceletonLoaderPizzaBlock.jsx";
 import AppPizzaBlockBlur from "../../components/AppPizzaBlock/AppPizzaBlockBlur.jsx";
 import AppPizzaBlock from "../../components/AppPizzaBlock/AppPizzaBlock.jsx";
 import Pagination from "../../components/Pagination/Pagination.jsx";
-import {ContextSearchField} from "../../App.jsx";
 import AppSearch from "../../components/AppSearch/AppSearch.jsx";
 import qs from 'qs';
 import {filterSelector, setFilters} from "../../redux-toolkit/slices/filtersSlice.js";
 import {burgersSelector, fetchBurgers} from "../../redux-toolkit/slices/burgersSlice.js";
 import AppNoData from "../../components/AppNoData/AppNoData.jsx";
+//import SceletonLoaderPizzaBlock from "../../components/SceletonLoaderPizzaBlock/SceletonLoaderPizzaBlock.jsx";
 
 function Home() {
   
@@ -22,7 +21,7 @@ function Home() {
   
   const isHaveSearchParams = useRef(false);
   
-  const {searchField} = useContext(ContextSearchField);
+  const {searchValue} = useSelector(filterSelector)
   
   const {itemsBurgers, status} = useSelector(burgersSelector)
   
@@ -32,7 +31,7 @@ function Home() {
   const category = categoryId ? ('category=' + categoryId) : '';
   const order = radioOrder === 'asc' ? 'asc' : 'desc';
   
-  const search = ''; //Использовал JS поиск по pizzaArray т.к. mpckapi.io не выполняет поиск по двум параметрам
+  const search = ''; //Переменная для передачи пустого параметра в строку запроса. Использовал JS поиск по pizzaArray т.к. mpckapi.io не выполняет поиск по двум параметрам
   
   
   useEffect(() => {
@@ -73,7 +72,7 @@ function Home() {
         axiosQuery().then(r => r);
       }
       isHaveSearchParams.current = false;
-    }, [categoryId, sortType, radioOrder, searchField, currentPage, limitPage]
+    }, [categoryId, sortType, radioOrder, searchValue, currentPage, limitPage]
   )
 
 //====================================================================
@@ -123,7 +122,7 @@ function Home() {
             : status === 'loading'
               ? [...new Array(12)].map((_, idx) => <AppPizzaBlockBlur key={idx}/>)
               : itemsBurgers
-                .filter(item => item.name.toLowerCase().includes(searchField.toLowerCase()))
+                .filter(item => item.name.toLowerCase().includes(searchValue.toLowerCase()))
                 .map(item => (<AppPizzaBlock {...item} key={item.id}/>))
         }
         

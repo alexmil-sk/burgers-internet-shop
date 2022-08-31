@@ -1,21 +1,23 @@
-import React, {useCallback, useContext, useRef, useState} from 'react';
+import React, {useCallback, useRef, useState} from 'react';
 import classes from './AppSearch.module.scss';
 import {BsSearch} from "react-icons/bs";
 import {GrClose} from "react-icons/gr";
-import {ContextSearchField} from "../../App.jsx";
 import debounce from 'lodash.debounce';
+import {useDispatch} from "react-redux";
+import {setSearchValue} from "../../redux-toolkit/slices/filtersSlice.js";
 
 
 function AppSearch() {
   
+  const dispatch = useDispatch();
+  
   const [localSearchField, setLocalSearchField] = useState('');
-  const {searchField, setSearchField} = useContext(ContextSearchField);
   const inputRef = useRef(null);
   
   
   const updateSearchFieldHandler = useCallback(
     debounce((val) => {
-      setSearchField(val);
+      dispatch(setSearchValue(val));
     }, 1000), [])
   
   function onChangeInput(e) {
@@ -25,7 +27,7 @@ function AppSearch() {
   
   function clearSearchField() {
     setLocalSearchField('');
-    setSearchField('');
+    dispatch(setSearchValue(''));
     inputRef.current.focus();
   }
   

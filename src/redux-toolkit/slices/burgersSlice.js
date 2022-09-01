@@ -50,6 +50,6 @@ const burgersSlice = createSlice({
 
 export const burgersSelector = state => state.burgers;
 
-export const {setItemsBurgers} = burgersSlice.actions;
+//export const {setItemsBurgers} = burgersSlice.actions;
 
 export default burgersSlice.reducer;

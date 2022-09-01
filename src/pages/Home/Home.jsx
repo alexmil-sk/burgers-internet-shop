@@ -21,11 +21,9 @@ function Home() {
   
   const isHaveSearchParams = useRef(false);
   
-  const {searchValue} = useSelector(filterSelector)
-  
   const {itemsBurgers, status} = useSelector(burgersSelector)
   
-  const {categoryId, sortType, radioOrder, limitPage, currentPage} = useSelector(filterSelector);
+  const {categoryId, searchValue, sortType, radioOrder, limitPage, currentPage} = useSelector(filterSelector);
   
   
   const category = categoryId ? ('category=' + categoryId) : '';

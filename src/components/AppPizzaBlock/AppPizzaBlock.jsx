@@ -2,6 +2,7 @@ import React, {useState} from 'react';
 import './AppPizzaBlock.scss';
 import {useDispatch, useSelector} from "react-redux";
 import {addItemBurger, cartItemsSelector} from "../../redux-toolkit/slices/cartSlice.js";
+import {Link} from "react-router-dom";
 
 const pizzaTypesArray = ['тонкое', 'традиционное'];
 
@@ -30,7 +31,9 @@ function AppPizzaBlock({...item}) {
   return (
     <div className="pizza-block">
       <div className="pizza-block__image">
-        <img src={imageUrl} alt="pizza-main"/>
+        <Link to={`burgers/${id}`}>
+          <img src={imageUrl} alt="pizza-main"/>
+        </Link>
       </div>
       <h4 className="pizza-block__title">{name}&nbsp;(#{id})</h4>
       <div className="pizza-block__selector">

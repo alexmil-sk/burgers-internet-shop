@@ -26,4 +26,84 @@
       letter-spacing: .2rem;
     }
   }
+  &Btn {
+    position: relative;
+    width: 100px;
+    &Img {
+      width: 100%;
+      position: absolute;
+      bottom: 30px;
+      left: 32px;
+      cursor: pointer;
+      border: 1px solid $red-400;
+      box-shadow: 0 0 5px 5px $red-300;
+
+      animation-name: rotate;
+      animation-duration: 5000ms;
+      animation-timing-function: linear;
+      animation-iteration-count: infinite;
+
+
+      &:hover {
+        border: 1px solid $yellow-500;
+        box-shadow: 0 0 5px 5px $yellow-400;
+
+        animation-name: bounce;
+        animation-duration: 1500ms;
+        animation-timing-function: ease-in-out;
+        animation-iteration-count: infinite;
+      }
+      &:active {
+        background: $neutral-400;
+        border: 1px solid $yellow-200;
+        box-shadow: 0 0 5px 5px $neutral-500;
+        transform: translateY(5px) scale(.8);
+
+        animation: none;
+      }
+    }
+  }
+}
+
+@keyframes bounce {
+  0%, 100% {
+    transform: translateY(0%);
+    animation-timing-function: cubic-bezier(0.8, 0, 1, 1);
+  }
+  50% {
+    transform: translateY(25%);
+    animation-timing-function: cubic-bezier(0, 0, 0.2, 1);
+  }
+}
+
+@keyframes rotate {
+
+  0%, 100% {
+    transform: rotate(0deg);
+    border: 1px solid $red-500;
+    box-shadow: 0 0 5px 5px $red-300;
+  }
+  25% {
+    transform: rotate(10deg);
+    border: 1px solid $rose-900;
+    box-shadow: 0 0 5px 5px $red-900;
+    background: $red-200;
+  }
+  50% {
+    transform: rotate(0deg);
+    border: 1px solid $red-500;
+    box-shadow: 0 0 5px 5px $red-300;
+    background: none;
+  }
+  75% {
+    transform: rotate(-10deg);
+    border: 1px solid $rose-900;
+    box-shadow: 0 0 5px 5px $red-900;
+    background: $red-200;
+  }
+  100% {
+    transform: rotate(0deg);
+    border: 1px solid $red-500;
+    box-shadow: 0 0 5px 5px $red-300;
+  }
 }

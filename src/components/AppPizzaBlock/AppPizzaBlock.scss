@@ -13,11 +13,15 @@
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    height: 250px;
+    min-height: 250px;
+    a {
+      flex: 0 0 10%;
+    }
 
     .rating-result {
       display: flex;
       justify-content: center;
+      flex: 0 0 20px;
       width: 100%;
     }
     .rating-result span {
@@ -45,7 +49,6 @@
     height: 55px;
     border-top: 1px solid $red-200;
     text-align: center;
-    margin: 10px 0;
     padding-top: 10px;
   }
 

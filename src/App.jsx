@@ -1,25 +1,29 @@
 import React from "react";
 import {Routes, Route} from "react-router-dom";
-import AppHeader from "./components/AppHeader/AppHeader.jsx";
 import Home from "./pages/Home/Home.jsx";
 import NotFound from "./pages/NotFound/NotFound.jsx";
 import Cart from "./pages/Cart/Cart.jsx";
 import AppBurgerInfo from "./components/AppBurgerInfo/AppBurgerInfo.jsx";
+import MainLayout from "./layouts/MainLayout/MainLayout.jsx";
+import InfoLayout from "./layouts/InfoLayout/InfoLayout.jsx";
+
 
 
 function App() {
   
     return (
-    <div className="wrapper">
-        <AppHeader/>
+    
         
         <Routes>
-          <Route path="/" element={<Home />}/>
-          <Route path="cart" element={<Cart />}/>
-          <Route path="burgers/:burgerId" element={<AppBurgerInfo />}/>
-          <Route path="*" element={<NotFound />}/>
+          <Route path="/" element={<MainLayout />}>
+            <Route path="/" element={<Home />}/>
+            <Route path="cart" element={<Cart />}/>
+            <Route path="*" element={<NotFound />}/>
+          </Route>
+          <Route path="/" element={<InfoLayout />}>
+            <Route path="burgers/:burgerId" element={<AppBurgerInfo />}/>
+          </Route>
         </Routes>
-    </div>
   )
 }
 

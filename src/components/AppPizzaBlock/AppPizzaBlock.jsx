@@ -8,7 +8,7 @@ const pizzaTypesArray = ['тонкое', 'традиционное'];
 
 
 function AppPizzaBlock({...item}) {
-  const {id, name, price, imageUrl, sizes, types} = item;
+  const {id, name, price, imageUrl, sizes, types, rating} = item;
   
   const dispatch = useDispatch();
   const totalBurgersInCart = useSelector(cartItemsSelector(id));
@@ -18,7 +18,7 @@ function AppPizzaBlock({...item}) {
   const [activeSize, setActiveSize] = useState(0);
   const [activeType, setActiveType] = useState(0);
   
-  function onClickAdd () {
+  function onClickAdd() {
     const newItem = {
       ...item,
       type: pizzaTypesArray[activeType],
@@ -34,6 +34,17 @@ function AppPizzaBlock({...item}) {
         <Link to={`burgers/${id}`}>
           <img src={imageUrl} alt="pizza-main"/>
         </Link>
+        <div className="rating-result">
+          {
+            [...new Array(rating)].map((r, idx) => (
+              <span className="active" key={idx}>{r}</span>
+            ))
+          }
+          
+          {
+            [...new Array(5 - rating)].map((r, idx) => <span key={idx}>{r}</span>)
+          }
+        </div>
       </div>
       <h4 className="pizza-block__title">{name}&nbsp;(#{id})</h4>
       <div className="pizza-block__selector">

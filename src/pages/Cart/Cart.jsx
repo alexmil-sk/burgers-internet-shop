@@ -7,7 +7,7 @@ import {ImList2} from "react-icons/im";
 import AppCartItem from "../../components/AppCartItem/AppCartItem.jsx";
 import {Link} from "react-router-dom";
 import {cartSelector, clearCartItemsBurger} from "../../redux-toolkit/slices/cartSlice.js";
-import AppEmptyCart from "../../components/AppEmptyCart/AppEmptyCart.jsx";
+import AppEmptyCart from "../../components/AppEmptyCart/AppEmptyCart.tsx";
 
 
 function Cart() {

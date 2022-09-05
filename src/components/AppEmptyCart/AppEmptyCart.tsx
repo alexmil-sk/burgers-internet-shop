@@ -6,7 +6,7 @@ import btnBurger from '../../assets/image/btn/btn-burger.png';
 import classes from "./AppEmptyCart.module.scss";
 
 
-function AppEmptyCart() {
+function AppEmptyCart(): React.ReactComponentElement<T> {
   
   const [isPressedBtn, setIsPressedBtn] = useState(false);
   

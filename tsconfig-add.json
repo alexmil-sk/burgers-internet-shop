@@ -1,0 +1,19 @@
+{
+	"compilerOptions": {
+    /*Восемь файлов могут быть заменены флагом "strict": true в файле tsconfig.json*/
+		"alwaysStrict": true,
+		"noImplicitAny": true,
+		"strictNullChecks": true,
+		"strictPropertyInitialization": true,
+    "strictFunctionTypes": true,
+    "strictBindCallApply": true,
+    "noImplicitThis": true,
+    "useUnknownInCatchVariables": true,
+    /*Конец заменяемых файлов*/
+    "noPropertyAccessFromIndexSignature": true,
+		"noImplicitReturns": true,
+		"noFallthroughCasesInSwitch": true,
+		"noUnusedLocals": true,
+		"noUnusedParameters": true
+	}
+}

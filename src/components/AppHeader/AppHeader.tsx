@@ -7,12 +7,12 @@ import {useSelector} from "react-redux";
 import {cartSelector} from "../../redux-toolkit/slices/cartSlice.js";
 
 
-function AppHeader() {
+function AppHeader(): React.ReactComponentElement<any> {
   const {pathname} = useLocation();
   
   
   const {items, totalPrice} = useSelector(cartSelector);
-  const totalCartCount = items.reduce((acc, item) => {
+  const totalCartCount = items.reduce((acc: number, item: {count: number}) => {
     return acc + item.count
   }, 0);
   

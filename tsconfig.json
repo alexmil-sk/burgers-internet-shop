@@ -15,9 +15,11 @@
   //  "src/lib.ts",
   //  "src/search-form.ts",
   //  "src/search-results.ts",
-  //  "src/user.ts"
+  //  "src/user.ts",
+  //  "src/@types/react-app-env.d.ts",
+  //   ....
   //],
   "include": [//__При небольшом количестве файлов использовать массив files, а при большом проекте - массив include
-    "src/**/*"
+    "src/**/*",
   ]
 }

@@ -30,9 +30,9 @@
   }
   &__cart {
     display: flex;
-    width: 150px;
+    min-width: 180px;
     height: 80%;
-    padding: 10px;
+    padding: 8px;
     background: $red-600;
     border-radius: 25px;
     cursor: pointer;
@@ -43,10 +43,12 @@
     &-sum {
       text-align: center;
       align-self: center;
-
       font-weight: 700;
       flex: 0 0 50%;
       border-right: 1px solid $neutral-50;
+      span {
+        margin: 0 5px;
+      }
     }
 
     &-icon {

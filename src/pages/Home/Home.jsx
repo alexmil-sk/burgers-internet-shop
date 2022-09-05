@@ -2,7 +2,7 @@ import React, {useEffect, useRef} from 'react';
 import {useDispatch, useSelector} from "react-redux";
 import {useNavigate, useLocation} from "react-router-dom";
 import AppCategories from "../../components/AppCategories/AppCategories.jsx";
-import AppSort from "../../components/AppSort/AppSort.jsx";
+import AppSort from "../../components/AppSort/AppSort.tsx";
 import AppPizzaBlockBlur from "../../components/AppPizzaBlock/AppPizzaBlockBlur.jsx";
 import AppPizzaBlock from "../../components/AppPizzaBlock/AppPizzaBlock.jsx";
 import Pagination from "../../components/Pagination/Pagination.jsx";

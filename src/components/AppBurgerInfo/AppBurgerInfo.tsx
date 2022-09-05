@@ -3,7 +3,7 @@ import classes from './AppBurgerInfo.module.scss';
 import axios from 'axios';
 import {useNavigate, useParams} from "react-router-dom";
 import AppBurgerInfoBlur from "./AppBurgerInfoBlur.jsx";
-import {BurgerInfo} from '../../typescript-types/types';
+import {BurgerInfo} from '../../@types/types';
 
 
 

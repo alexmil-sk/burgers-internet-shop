@@ -3,11 +3,22 @@ import classes from './AppBurgerInfo.module.scss';
 import axios from 'axios';
 import {useNavigate, useParams} from "react-router-dom";
 import AppBurgerInfoBlur from "./AppBurgerInfoBlur.jsx";
+import {BurgerInfo} from '../../typescript-types/types';
 
-function AppBurgerInfo() {
+
+
+const AppBurgerInfo: React.FC = () => {
   
   const [isLoading, setIsLoading] = useState(false);
-  const [burgerInfo, setBurgerInfo] = useState({});
+  const [burgerInfo, setBurgerInfo] = useState<BurgerInfo>({
+    id: '',
+    imageUrl: '',
+    name: '',
+    price: 0,
+    rating: 0,
+    sizes: [],
+    types: [],
+  });
   const {id, imageUrl, name, price, rating, sizes, types} = burgerInfo;
   const {burgerId} = useParams();
   const navigate = useNavigate();
@@ -25,7 +36,7 @@ function AppBurgerInfo() {
         setIsLoading(false);
         navigate("/", {replace: true});
         confirm('There is no such burger.\n Try another one')
-        console.log(error.message);
+        console.log(error);
       }
     }())
   }, []);

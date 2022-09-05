@@ -14,8 +14,22 @@
     flex-direction: column;
     justify-content: space-between;
     min-height: 250px;
+
     a {
       flex: 0 0 10%;
+      &:hover {
+        animation-name: scale;
+        animation-duration: 500ms;
+        animation-timing-function: linear;
+        animation-iteration-count: 1;
+      }
+      &:active {
+        transform: scale(.95);
+      }
+      animation-name: swing;
+      animation-duration: 5000ms;
+      animation-timing-function: linear;
+      animation-iteration-count: infinite;
     }
 
     .rating-result {
@@ -24,6 +38,7 @@
       flex: 0 0 20px;
       width: 100%;
     }
+
     .rating-result span {
       padding: 0;
       font-size: 32px;
@@ -32,9 +47,11 @@
       color: lightgrey;
       text-shadow: 1px 1px #bbb;
     }
+
     .rating-result > span:before {
       content: '★';
     }
+
     .rating-result > span.active {
       color: gold;
       text-shadow: 1px 1px #c60;
@@ -167,6 +184,7 @@
       animation-timing-function: ease-in-out;
       animation-iteration-count: infinite;
     }
+
     &-button:active {
       box-shadow: inset 3px 3px 3px 3px $red-800;
       background: $red-100;
@@ -186,4 +204,34 @@
     animation-timing-function: cubic-bezier(0, 0, 0.2, 1);
   }
 
+}
+
+@keyframes swing {
+
+  0%, 100% {
+    transform: rotate(0deg);
+
+  }
+  25% {
+    transform: rotate(2deg);
+  }
+  50% {
+    transform: rotate(0deg);
+
+  }
+  75% {
+    transform: rotate(-2deg);
+  }
+}
+
+@keyframes scale {
+
+  0%, 100% {
+    transform: scale(1);
+
+  }
+  50% {
+    transform: scale(1.1);
+
+  }
 }

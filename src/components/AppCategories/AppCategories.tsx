@@ -3,16 +3,18 @@ import './AppCategories.scss';
 import {useSelector, useDispatch} from "react-redux";
 import {filterSelector, setCategoryId} from "../../redux-toolkit/slices/filtersSlice.js";
 
+type Category = string;
 
-function AppCategories() {
+
+const AppCategories: React.FC = (): React.ReactComponentElement<any> => {
   
   const dispatch = useDispatch();
   
-  const categories = ['Все', 'Мясные', 'Вегетарианская', 'Гриль', 'Острые', 'Закрытые']
+  const categories: Category[] = ['Все', 'Мясные', 'Вегетарианская', 'Гриль', 'Острые', 'Закрытые']
   
   const {categoryId} = useSelector(filterSelector);
   
-  function onClickCategory(idx) {
+  function onClickCategory(idx: number) {
     dispatch(setCategoryId(idx));
   }
   

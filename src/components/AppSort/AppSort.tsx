@@ -3,11 +3,8 @@ import './AppSort.scss';
 import {GrAscend, GrDescend} from "react-icons/gr";
 import {useDispatch, useSelector} from "react-redux";
 import {setSortType, setRadioOrder, setLimitPage, filterSelector} from '../../redux-toolkit/slices/filtersSlice.js';
+import {ArrSortType} from '../../@types/types';
 
-type ArrSortType = {
-  name: string;
-  sortProperty: string;
-}
 
 
 export const arrSortTypes: ArrSortType[] = [

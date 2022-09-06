@@ -8,3 +8,8 @@ export type BurgerInfo = {
   sizes: number[];
   types: number[];
 }
+
+export type ArrSortType = {
+  name: string;
+  sortProperty: string;
+}

@@ -13,3 +13,5 @@ export type ArrSortType = {
   name: string;
   sortProperty: string;
 }
+
+export type Category = string;

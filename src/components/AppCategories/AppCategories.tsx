@@ -2,8 +2,9 @@ import React from 'react';
 import './AppCategories.scss';
 import {useSelector, useDispatch} from "react-redux";
 import {filterSelector, setCategoryId} from "../../redux-toolkit/slices/filtersSlice.js";
+import {Category} from '../../@types/types';
 
-type Category = string;
+
 
 
 const AppCategories: React.FC = (): React.ReactComponentElement<any> => {

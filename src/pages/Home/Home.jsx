@@ -6,7 +6,7 @@ import AppSort from "../../components/AppSort/AppSort.tsx";
 import AppPizzaBlockBlur from "../../components/AppPizzaBlock/AppPizzaBlockBlur.jsx";
 import AppPizzaBlock from "../../components/AppPizzaBlock/AppPizzaBlock.tsx";
 import Pagination from "../../components/Pagination/Pagination.tsx";
-import AppSearch from "../../components/AppSearch/AppSearch.jsx";
+import AppSearch from "../../components/AppSearch/AppSearch.tsx";
 import qs from 'qs';
 import {filterSelector, setFilters} from "../../redux-toolkit/slices/filtersSlice.js";
 import {burgersSelector, fetchBurgers} from "../../redux-toolkit/slices/burgersSlice.js";

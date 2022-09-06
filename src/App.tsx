@@ -3,7 +3,7 @@ import * as React from "react";
 import {Routes, Route} from "react-router-dom";
 import Home from "./pages/Home/Home.jsx";
 import NotFound from "./pages/NotFound/NotFound.jsx";
-import Cart from "./pages/Cart/Cart.jsx";
+import Cart from "./pages/Cart/Cart.js";
 import AppBurgerInfo from "./components/AppBurgerInfo/AppBurgerInfo.js";
 import MainLayout from "./layouts/MainLayout/MainLayout.jsx";
 import InfoLayout from "./layouts/InfoLayout/InfoLayout.jsx";

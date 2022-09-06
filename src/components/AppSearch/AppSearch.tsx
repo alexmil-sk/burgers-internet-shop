@@ -7,12 +7,12 @@ import {useDispatch} from "react-redux";
 import {setSearchValue} from "../../redux-toolkit/slices/filtersSlice.js";
 
 
-function AppSearch() {
+const AppSearch: React.FC = () => {
   
   const dispatch = useDispatch();
   
-  const [localSearchField, setLocalSearchField] = useState('');
-  const inputRef = useRef(null);
+  const [localSearchField, setLocalSearchField] = useState<string>('');
+  const inputRef = useRef<HTMLInputElement | null>(null);
   
   
   const updateSearchFieldHandler = useCallback(
@@ -20,7 +20,7 @@ function AppSearch() {
       dispatch(setSearchValue(val));
     }, 1000), [])
   
-  function onChangeInput(e) {
+  function onChangeInput(e: any) {
     setLocalSearchField(e.target.value);
     updateSearchFieldHandler(e.target.value);
   }
@@ -28,7 +28,7 @@ function AppSearch() {
   function clearSearchField() {
     setLocalSearchField('');
     dispatch(setSearchValue(''));
-    inputRef.current.focus();
+    inputRef.current?.focus?.();
   }
   
   return (

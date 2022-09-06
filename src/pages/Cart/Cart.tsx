@@ -4,23 +4,24 @@ import classes from './Cart.module.scss';
 import {BsCart4} from "react-icons/bs";
 import {RiDeleteBin6Line} from "react-icons/ri";
 import {ImList2} from "react-icons/im";
-import AppCartItem from "../../components/AppCartItem/AppCartItem.tsx";
+import AppCartItem from "../../components/AppCartItem/AppCartItem";
 import {Link} from "react-router-dom";
 import {cartSelector, clearCartItemsBurger} from "../../redux-toolkit/slices/cartSlice.js";
-import AppEmptyCart from "../../components/AppEmptyCart/AppEmptyCart.tsx";
+import AppEmptyCart from "../../components/AppEmptyCart/AppEmptyCart";
+import {BurgerBlock} from "../../@types/types";
 
 
-function Cart() {
+const Cart: React.FC = () => {
   
   const dispatch = useDispatch();
   const {items, totalPrice} = useSelector(cartSelector);
-  const totalCartCount = items.reduce((acc, item) => {
+  const totalCartCount = items.reduce((acc: number, item: {count: number}) => {
     return acc + item.count
   }, 0);
   
   function onClearCart() {
     if(window.confirm('Are you sure you want to clear order')) {
-      dispatch(clearCartItemsBurger());
+      dispatch(clearCartItemsBurger({payload: undefined}));
     }
   }
   
@@ -40,7 +41,7 @@ function Cart() {
       <div className={classes.cartContent}>
         
         {
-            items.map(item => <AppCartItem item={item} key={item.id}/>)
+            items.map((item: BurgerBlock) => <AppCartItem item={item} key={item.id}/>)
         }
       
       </div>

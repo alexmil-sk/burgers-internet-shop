@@ -4,7 +4,13 @@ import {GrAscend, GrDescend} from "react-icons/gr";
 import {useDispatch, useSelector} from "react-redux";
 import {setSortType, setRadioOrder, setLimitPage, filterSelector} from '../../redux-toolkit/slices/filtersSlice.js';
 
-export const arrSortTypes = [
+type ArrSortType = {
+  name: string;
+  sortProperty: string;
+}
+
+
+export const arrSortTypes: ArrSortType[] = [
   {name: 'популярности', sortProperty: 'rating'},
   {name: 'цене', sortProperty: 'price'},
   {name: 'алфавиту', sortProperty: 'name'}
@@ -21,15 +27,16 @@ function AppSort() {
     setTogglesOpenPopup(!toggleOpenPopup)
   }
   
-  function getActiveSortType(sortObj) {
+  function getActiveSortType(sortObj: ArrSortType) {
     dispatch(setSortType(sortObj));
     setTogglesOpenPopup(false);
   }
   
-  function getRadioOrder(e) {
+  function getRadioOrder(e: React.ChangeEvent<HTMLInputElement>) {
     dispatch(setRadioOrder(e.target.value));
   }
-  function onChangeLimitPage(e) {
+  
+  function onChangeLimitPage(e: React.ChangeEvent<HTMLSelectElement>) {
     dispatch(setLimitPage(e.target.value));
   }
   
@@ -82,7 +89,7 @@ function AppSort() {
       <div className={toggleOpenPopup ? 'sort__popup' : 'sort__popup invisible'}>
         <ul>
           {
-            Object.keys(arrSortTypes).map(key =>
+            Object.keys(arrSortTypes).map((key) =>
               <li
                 onClick={() => getActiveSortType(arrSortTypes[key])}
                 className={sortType.name === arrSortTypes[key].name ? "active" : ''}

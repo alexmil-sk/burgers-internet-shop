@@ -3,7 +3,7 @@ import noData from '../../assets/image/no-data.jpg';
 import classes from "./AppNoData.module.scss";
 
 
-function AppNoData() {
+const AppNoData: React.FC = () => {
   return (
     <>
       <div className={classes.AppNoData}>

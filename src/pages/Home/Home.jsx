@@ -4,13 +4,13 @@ import {useNavigate, useLocation} from "react-router-dom";
 import AppCategories from "../../components/AppCategories/AppCategories.tsx";
 import AppSort from "../../components/AppSort/AppSort.tsx";
 import AppPizzaBlockBlur from "../../components/AppPizzaBlock/AppPizzaBlockBlur.jsx";
-import AppPizzaBlock from "../../components/AppPizzaBlock/AppPizzaBlock.jsx";
-import Pagination from "../../components/Pagination/Pagination.jsx";
+import AppPizzaBlock from "../../components/AppPizzaBlock/AppPizzaBlock.tsx";
+import Pagination from "../../components/Pagination/Pagination.tsx";
 import AppSearch from "../../components/AppSearch/AppSearch.jsx";
 import qs from 'qs';
 import {filterSelector, setFilters} from "../../redux-toolkit/slices/filtersSlice.js";
 import {burgersSelector, fetchBurgers} from "../../redux-toolkit/slices/burgersSlice.js";
-import AppNoData from "../../components/AppNoData/AppNoData.jsx";
+import AppNoData from "../../components/AppNoData/AppNoData.tsx";
 //import SceletonLoaderPizzaBlock from "../../components/SceletonLoaderPizzaBlock/SceletonLoaderPizzaBlock.jsx";
 
 function Home() {

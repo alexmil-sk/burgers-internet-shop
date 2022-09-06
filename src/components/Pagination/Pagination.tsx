@@ -4,13 +4,14 @@ import classes from './Pagination.module.scss';
 import ReactPaginate from "react-paginate";
 import {useDispatch} from "react-redux";
 import {setCurrentPage} from '../../redux-toolkit/slices/filtersSlice.js';
+import {PaginationPageChange} from '../../@types/types';
 
 
 
-function Pagination() {
+const Pagination: React.FC = () => {
   const dispatch = useDispatch();
   
-  function onPageChange(e) {
+  function onPageChange(e: PaginationPageChange) {
     dispatch(setCurrentPage(e.selected + 1));
   }
   
@@ -24,7 +25,7 @@ function Pagination() {
         pageRangeDisplayed={8}
         pageCount={5}
         previousLabel="< "
-        renderOnZeroPageCount={null}
+        //renderOnZeroPageCount={null}
       />
     </div>
   );

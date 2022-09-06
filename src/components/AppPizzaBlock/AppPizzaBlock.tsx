@@ -3,11 +3,12 @@ import './AppPizzaBlock.scss';
 import {useDispatch, useSelector} from "react-redux";
 import {addItemBurger, cartItemsSelector} from "../../redux-toolkit/slices/cartSlice.js";
 import {Link} from "react-router-dom";
+import {AppPizzaBlockProps, BurgerInfo} from "../../@types/types";
 
-const pizzaTypesArray = ['тонкое', 'традиционное'];
+const pizzaTypesArray: string[] = ['тонкое', 'традиционное'];
 
 
-function AppPizzaBlock({...item}) {
+const AppPizzaBlock: React.FC<AppPizzaBlockProps> = ({...item}: AppPizzaBlockProps) => {
   const {id, name, price, imageUrl, sizes, types, rating} = item;
   
   const dispatch = useDispatch();
@@ -15,11 +16,11 @@ function AppPizzaBlock({...item}) {
   
   const count = totalBurgersInCart ? totalBurgersInCart.count : null;
   
-  const [activeSize, setActiveSize] = useState(0);
-  const [activeType, setActiveType] = useState(0);
+  const [activeSize, setActiveSize] = useState<number>(0);
+  const [activeType, setActiveType] = useState<number>(0);
   
   function onClickAdd() {
-    const newItem = {
+    const newItem: BurgerInfo = {
       ...item,
       type: pizzaTypesArray[activeType],
       size: sizes[activeSize],

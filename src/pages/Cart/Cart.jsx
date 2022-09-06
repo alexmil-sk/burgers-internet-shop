@@ -4,7 +4,7 @@ import classes from './Cart.module.scss';
 import {BsCart4} from "react-icons/bs";
 import {RiDeleteBin6Line} from "react-icons/ri";
 import {ImList2} from "react-icons/im";
-import AppCartItem from "../../components/AppCartItem/AppCartItem.jsx";
+import AppCartItem from "../../components/AppCartItem/AppCartItem.tsx";
 import {Link} from "react-router-dom";
 import {cartSelector, clearCartItemsBurger} from "../../redux-toolkit/slices/cartSlice.js";
 import AppEmptyCart from "../../components/AppEmptyCart/AppEmptyCart.tsx";

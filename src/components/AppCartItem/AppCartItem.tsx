@@ -5,14 +5,16 @@ import { AiOutlinePlusCircle } from "react-icons/ai";
 import { AiOutlineCloseCircle } from "react-icons/ai";
 import {removeItemBurger, addItemBurger, addCartDecrement} from "../../redux-toolkit/slices/cartSlice.js";
 import {useDispatch} from "react-redux";
+import {AppCartItemProps} from "../../@types/types";
 
 
-function AppCartItem({item}) {
+
+const AppCartItem: React.FC<AppCartItemProps> = ({item}:AppCartItemProps) => {
   
-  const {id, name, imageUrl, price, type, size, count,} = item;
+  const {id, name, imageUrl, price, type, size, count} = item;
   const dispatch = useDispatch();
   
-  function removeBurgerFromCart(id) {
+  function removeBurgerFromCart(id: string) {
     if(window.confirm('Are you sure you want to remove')) {
       dispatch(removeItemBurger(id));
     }

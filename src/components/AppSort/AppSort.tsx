@@ -89,12 +89,12 @@ function AppSort() {
       <div className={toggleOpenPopup ? 'sort__popup' : 'sort__popup invisible'}>
         <ul>
           {
-            Object.keys(arrSortTypes).map((key) =>
+            arrSortTypes.map((obj, idx) =>
               <li
-                onClick={() => getActiveSortType(arrSortTypes[key])}
-                className={sortType.name === arrSortTypes[key].name ? "active" : ''}
-                key={arrSortTypes[key].name}
-              >{arrSortTypes[key].name}
+                onClick={() => getActiveSortType(obj)}
+                className={sortType.name === obj.name ? "active" : ''}
+                key={idx}
+              >{obj.name}
               </li>)
           }
         </ul>

@@ -1,9 +1,9 @@
 import React from 'react';
 import {Outlet} from 'react-router-dom';
-import classes from './MainLayout.module.scss';
-import AppHeader from "../../components/AppHeader/AppHeader.tsx";
+//import classes from './MainLayout.module.scss';
+import AppHeader from "../../components/AppHeader/AppHeader";
 
-function MainLayout() {
+const MainLayout: React.FC = () => {
   return (
     <>
       <div className="wrapper">

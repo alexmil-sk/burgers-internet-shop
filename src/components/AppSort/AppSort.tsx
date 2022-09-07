@@ -5,8 +5,6 @@ import {useDispatch, useSelector} from "react-redux";
 import {setSortType, setRadioOrder, setLimitPage, filterSelector} from '../../redux-toolkit/slices/filtersSlice.js';
 import {ArrSortType} from '../../@types/types';
 
-
-
 export const arrSortTypes: ArrSortType[] = [
   {name: 'популярности', sortProperty: 'rating'},
   {name: 'цене', sortProperty: 'price'},
@@ -14,7 +12,7 @@ export const arrSortTypes: ArrSortType[] = [
 ];
 
 
-function AppSort() {
+const AppSort: React.FC = () => {
   
   const dispatch = useDispatch();
   const {sortType, radioOrder, limitPage} = useSelector(filterSelector);

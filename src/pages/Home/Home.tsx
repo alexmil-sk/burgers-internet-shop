@@ -1,19 +1,20 @@
 import React, {useEffect, useRef} from 'react';
 import {useDispatch, useSelector} from "react-redux";
 import {useNavigate, useLocation} from "react-router-dom";
-import AppCategories from "../../components/AppCategories/AppCategories.tsx";
-import AppSort from "../../components/AppSort/AppSort.tsx";
-import AppPizzaBlockBlur from "../../components/AppPizzaBlock/AppPizzaBlockBlur.jsx";
-import AppPizzaBlock from "../../components/AppPizzaBlock/AppPizzaBlock.tsx";
-import Pagination from "../../components/Pagination/Pagination.tsx";
-import AppSearch from "../../components/AppSearch/AppSearch.tsx";
+import AppCategories from "../../components/AppCategories/AppCategories";
+import AppSort from "../../components/AppSort/AppSort";
+import AppPizzaBlockBlur from "../../components/AppPizzaBlock/AppPizzaBlockBlur.js";
+import AppPizzaBlock from "../../components/AppPizzaBlock/AppPizzaBlock";
+import Pagination from "../../components/Pagination/Pagination";
+import AppSearch from "../../components/AppSearch/AppSearch";
 import qs from 'qs';
 import {filterSelector, setFilters} from "../../redux-toolkit/slices/filtersSlice.js";
 import {burgersSelector, fetchBurgers} from "../../redux-toolkit/slices/burgersSlice.js";
-import AppNoData from "../../components/AppNoData/AppNoData.tsx";
-//import SceletonLoaderPizzaBlock from "../../components/SceletonLoaderPizzaBlock/SceletonLoaderPizzaBlock.jsx";
+import AppNoData from "../../components/AppNoData/AppNoData";
+//import SceletonLoaderPizzaBlock from "../../components/SceletonLoaderPizzaBlock/SceletonLoaderPizzaBlock.tsx";
 
-function Home() {
+
+const Home: React.FC = () => {
   
   let navigate = useNavigate();
   let location = useLocation();
@@ -21,15 +22,13 @@ function Home() {
   
   const isHaveSearchParams = useRef(false);
   
-  const {itemsBurgers, status} = useSelector(burgersSelector)
+  const {itemsBurgers, status} = useSelector(burgersSelector);
   
   const {categoryId, searchValue, sortType, radioOrder, limitPage, currentPage} = useSelector(filterSelector);
   
   
   const category = categoryId ? ('category=' + categoryId) : '';
   const order = radioOrder === 'asc' ? 'asc' : 'desc';
-  
-  
   
   
   useEffect(() => {
@@ -44,11 +43,11 @@ function Home() {
   
   useEffect(() => {
     const queryString = qs.stringify({
-      sortBy: sortType.sortProperty,
-      category: categoryId,
-      page: currentPage,
-      order: radioOrder,
-      limit: limitPage
+      sortType,
+      categoryId,
+      currentPage,
+      radioOrder,
+      limitPage
     });
     navigate(`?${queryString}`)
     
@@ -94,7 +93,10 @@ function Home() {
     //   })
     
     //AСИНХРОННЫЙ ЗАПРОС =====================================================
-    dispatch(fetchBurgers({
+    
+    dispatch(
+      // @ts-ignore
+      fetchBurgers({
       category,
       order,
       sortType,

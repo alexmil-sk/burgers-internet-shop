@@ -15,7 +15,7 @@ const AppCategories: React.FC = (): React.ReactComponentElement<any> => {
   
   const {categoryId} = useSelector(filterSelector);
   
-  function onClickCategory(idx: number) {
+  function onClickCategory(idx: number): void {
     dispatch(setCategoryId(idx));
   }
   

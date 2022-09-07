@@ -1,7 +1,10 @@
 import {createSlice, createAsyncThunk} from '@reduxjs/toolkit';
 import axios from "axios";
+import {RootState} from "../store";
+import {IBurgersSliceState, IBurgerSliceProps} from "../../@types/interfaces";
+import {BurgerFetchInfo} from "../../@types/types";
 
-export const fetchBurgers = createAsyncThunk(
+export const fetchBurgers = createAsyncThunk<BurgerFetchInfo, IBurgerSliceProps>(
   'burgers/fetchBurgersStatus',
   async ({category, order, sortType, limitPage, currentPage}) => {
     
@@ -14,7 +17,8 @@ export const fetchBurgers = createAsyncThunk(
   });
 
 
-const initialState = {
+
+const initialState: IBurgersSliceState = {
   itemsBurgers: [],
   status: 'loading',//loading,| success | error
 }
@@ -48,7 +52,7 @@ const burgersSlice = createSlice({
   },
 });
 
-export const burgersSelector = state => state.burgers;
+export const burgersSelector = (state: RootState) => state.burgers;
 
 //export const {setItemsBurgers} = burgersSlice.actions;
 

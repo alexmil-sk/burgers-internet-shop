@@ -1,7 +1,7 @@
-import React, {useState} from 'react';
+import React from 'react';
 import './AppPizzaBlock.scss';
 
-function AppPizzaBlock() {
+const AppPizzaBlock: React.FC = () => {
   
   return (
     <div className="pizza-block" style={{filter: 'blur(10px)'}}>

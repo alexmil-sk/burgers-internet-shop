@@ -1,8 +1,8 @@
 import React from 'react';
 import classes from './NotFound.module.scss';
-import AppNoData from "../../components/AppNoData/AppNoData.tsx";
+import AppNoData from "../../components/AppNoData/AppNoData";
 
-function NotFound() {
+const NotFound: React.FC = () => {
   return (
     <div className={classes.container}>
       <AppNoData />

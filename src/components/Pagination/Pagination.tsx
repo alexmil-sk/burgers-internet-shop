@@ -9,6 +9,7 @@ import {PaginationPageChange} from '../../@types/types';
 
 
 const Pagination: React.FC = () => {
+  
   const dispatch = useDispatch();
   
   function onPageChange(e: PaginationPageChange) {

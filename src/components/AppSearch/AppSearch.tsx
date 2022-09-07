@@ -20,7 +20,7 @@ const AppSearch: React.FC = () => {
       dispatch(setSearchValue(val));
     }, 1000), [])
   
-  function onChangeInput(e: any) {
+  function onChangeInput(e:  React.ChangeEvent<HTMLInputElement>) {
     setLocalSearchField(e.target.value);
     updateSearchFieldHandler(e.target.value);
   }

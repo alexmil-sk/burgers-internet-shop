@@ -21,7 +21,7 @@ const Cart: React.FC = () => {
   
   function onClearCart() {
     if(window.confirm('Are you sure you want to clear order')) {
-      dispatch(clearCartItemsBurger({payload: undefined}));
+      dispatch(clearCartItemsBurger({payload: null}));
     }
   }
   

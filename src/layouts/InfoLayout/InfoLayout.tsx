@@ -4,12 +4,9 @@ import {Link, Outlet} from "react-router-dom";
 import catalogBtnRed from '../../assets/image/btn/back-to-catalog-red.png';
 import catalogBtnGreen from '../../assets/image/btn/back-to-catalog-green.png';
 
-function InfoLayout() {
+const InfoLayout: React.FC = () => {
   
-  const [isClickedToCat, setIsClickedToCat] = useState(false);
-  
-  
-  console.log(isClickedToCat);
+  const [isClickedToCat, setIsClickedToCat] = useState<boolean>(false);
   
   
   return (

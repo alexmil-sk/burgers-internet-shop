@@ -1,7 +1,7 @@
 import React from 'react';
 import './AppLoader.scss';
 
-function AppLoader() {
+const AppLoader: React.FC = () => {
   return (
     <div className="loader">
       <div className="lds-spinner">

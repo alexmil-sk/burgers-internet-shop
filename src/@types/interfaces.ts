@@ -29,3 +29,9 @@ export interface IBurgerSliceProps {
   limitPage: string,
   currentPage: number,
 }
+
+export interface IAppSortProps  {
+  sortType: SortType,
+  radioOrder: string,
+  limitPage: string
+}

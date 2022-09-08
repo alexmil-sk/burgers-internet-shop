@@ -26,7 +26,7 @@ const Home: React.FC = () => {
   
   const {itemsBurgers, status} = useSelector(burgersSelector);
   
-  const {categoryId, searchValue, sortType, radioOrder, limitPage, currentPage} = useSelector(filterSelector);
+  const {categoryId, searchValue, sortType, radioOrder, limitPage, currentPage}: IFilterSliceState = useSelector(filterSelector);
   
   
   const category = categoryId ? ('category=' + categoryId) : '';
@@ -111,7 +111,11 @@ const Home: React.FC = () => {
       <AppSearch/>
       <div className="info-panel">
         <AppCategories/>
-        <AppSort/>
+        <AppSort
+          sortType={sortType}
+          radioOrder={radioOrder}
+          limitPage={limitPage}
+        />
       </div>
       <div className="pizza-list">
         

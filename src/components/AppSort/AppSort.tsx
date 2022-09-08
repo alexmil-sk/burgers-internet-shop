@@ -1,9 +1,10 @@
 import React, {useState} from 'react';
 import './AppSort.scss';
 import {GrAscend, GrDescend} from "react-icons/gr";
-import {useDispatch, useSelector} from "react-redux";
-import {setSortType, setRadioOrder, setLimitPage, filterSelector} from '../../redux-toolkit/slices/filtersSlice.js';
+import {useDispatch} from "react-redux";
+import {setSortType, setRadioOrder, setLimitPage} from '../../redux-toolkit/slices/filtersSlice.js';
 import {ArrSortType} from '../../@types/types';
+import {IAppSortProps} from "../../@types/interfaces";
 
 export const arrSortTypes: ArrSortType[] = [
   {name: 'популярности', sortProperty: 'rating'},
@@ -12,10 +13,10 @@ export const arrSortTypes: ArrSortType[] = [
 ];
 
 
-const AppSort: React.FC = () => {
+
+const AppSort: React.FC<IAppSortProps> = React.memo(({sortType, radioOrder, limitPage}) => {
   
   const dispatch = useDispatch();
-  const {sortType, radioOrder, limitPage} = useSelector(filterSelector);
   const [toggleOpenPopup, setTogglesOpenPopup] = useState(false);
   
   function toggleSortHandle() {
@@ -109,6 +110,6 @@ const AppSort: React.FC = () => {
       {/*}*/}
     </div>
   );
-}
+})
 
 export default AppSort;

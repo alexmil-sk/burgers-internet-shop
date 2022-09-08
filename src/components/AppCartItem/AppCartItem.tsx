@@ -4,7 +4,7 @@ import { AiOutlineMinusCircle } from "react-icons/ai";
 import { AiOutlinePlusCircle } from "react-icons/ai";
 import { AiOutlineCloseCircle } from "react-icons/ai";
 import {removeItemBurger, addItemBurger, addCartDecrement} from "../../redux-toolkit/slices/cartSlice.js";
-import {AppCartItemProps} from "../../@types/types";
+import {AppCartItemProps, BurgerInfo} from "../../@types/types";
 import {useAppDispatch} from "../../redux-toolkit/store";
 
 
@@ -32,14 +32,14 @@ const AppCartItem: React.FC<AppCartItemProps> = ({item}:AppCartItemProps) => {
         </div>
         <div className={classes.cartItemCount}>
             <AiOutlineMinusCircle
-              className={count < 2 ? classes.MinusCircleDisabled : classes.MinusCircle}
+              className={count === 1 ? classes.MinusCircleDisabled : classes.MinusCircle}
               onClick={() => dispatch(addCartDecrement(id))}
             />
          
           <span>{count}</span>
           <AiOutlinePlusCircle
             className={classes.PlusCircle}
-            onClick={() =>  dispatch(addItemBurger({id}))}
+            onClick={() =>  dispatch(addItemBurger({id} as  BurgerInfo))}
           />
         </div>
         <div className={classes.cartItemPrice}>

@@ -3,7 +3,7 @@ import axios from "axios";
 import {RootState} from "../store";
 import {IBurgersSliceState, IBurgerSliceProps} from "../../@types/interfaces";
 import {BurgerFetchInfo} from "../../@types/types";
-import {BurgersSliceStatus} from "../../@types/enums";
+import {BurgersSliceStatusEnum} from "../../@types/enums";
 
 export const fetchBurgers = createAsyncThunk<BurgerFetchInfo[], IBurgerSliceProps>(
   'burgers/fetchBurgersStatus',
@@ -20,7 +20,7 @@ export const fetchBurgers = createAsyncThunk<BurgerFetchInfo[], IBurgerSliceProp
 
 const initialState: IBurgersSliceState = {
   itemsBurgers: [],
-  status: BurgersSliceStatus.LOADING,//loading,| success | error
+  status: BurgersSliceStatusEnum.LOADING,//loading,| success | error
 }
 
 const burgersSlice = createSlice({
@@ -38,17 +38,17 @@ const burgersSlice = createSlice({
   extraReducers: (builder) => {
     
     builder.addCase(fetchBurgers.pending, (state, _) => {
-      state.status = BurgersSliceStatus.LOADING;
+      state.status = BurgersSliceStatusEnum.LOADING;
       state.itemsBurgers = [];
     });
   
     builder.addCase(fetchBurgers.fulfilled, (state, action) => {
-          state.status = BurgersSliceStatus.SUCCESS;
+          state.status = BurgersSliceStatusEnum.SUCCESS;
           state.itemsBurgers = action.payload;
     });
   
     builder.addCase(fetchBurgers.rejected, (state, _ ) => {
-           state.status = BurgersSliceStatus.ERROR;
+           state.status = BurgersSliceStatusEnum.ERROR;
            state.itemsBurgers = [];
     });
   },

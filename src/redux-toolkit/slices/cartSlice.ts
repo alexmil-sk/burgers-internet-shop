@@ -28,7 +28,6 @@ export const cartSlice = createSlice({
         state.items.push({...action.payload, count: 1});
       }
       
-      
       state.totalPrice = state.items.reduce((accum, item) => {
         return accum + (item['price'] * item.count);
       }, 0)
@@ -51,6 +50,9 @@ export const cartSlice = createSlice({
       if (findItemIncr!.count > 1) {
         findItemIncr!.count--;
       }
+      state.totalPrice = state.items.reduce((accum, item) => {
+        return accum + (item['price'] * item.count);
+      }, 0)
     }
   }
 });

@@ -8,7 +8,7 @@ import AppCartItem from "../../components/AppCartItem/AppCartItem";
 import {Link} from "react-router-dom";
 import {cartSelector, clearCartItemsBurger} from "../../redux-toolkit/slices/cartSlice.js";
 import AppEmptyCart from "../../components/AppEmptyCart/AppEmptyCart";
-import {BurgerBlock} from "../../@types/types";
+import {BurgerInfo} from "../../@types/types";
 
 
 const Cart: React.FC = () => {
@@ -41,7 +41,7 @@ const Cart: React.FC = () => {
       <div className={classes.cartContent}>
         
         {
-            items.map((item: BurgerBlock) => <AppCartItem item={item} key={item.id}/>)
+            items.map((item: BurgerInfo) => <AppCartItem item={item} key={item.id}/>)
         }
       
       </div>

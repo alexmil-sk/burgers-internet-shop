@@ -32,7 +32,7 @@ const AppPizzaBlock: React.FC<AppPizzaBlockProps> = ({...item}: AppPizzaBlockPro
   return (
     <div className="pizza-block">
       <div className="pizza-block__image">
-        <Link to={`burgers/${id}`}>
+        <Link to={`burgers/${id}`} key={id}>
           <img src={imageUrl} alt="pizza-main"/>
         </Link>
         <div className="rating-result">

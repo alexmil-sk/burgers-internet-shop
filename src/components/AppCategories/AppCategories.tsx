@@ -3,6 +3,7 @@ import './AppCategories.scss';
 import {useSelector, useDispatch} from "react-redux";
 import {filterSelector, setCategoryId} from "../../redux-toolkit/slices/filtersSlice.js";
 import {Category} from '../../@types/types';
+//import { useWhyDidYouUpdate } from 'ahooks';
 
 
 

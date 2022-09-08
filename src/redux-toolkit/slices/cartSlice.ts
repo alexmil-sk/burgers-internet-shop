@@ -1,7 +1,7 @@
 import {createSlice, PayloadAction} from '@reduxjs/toolkit';
 import {ICartSliceState} from "../../@types/interfaces";
 import {RootState} from "../store";
-import { BurgerInfo} from "../../@types/types";
+import {BurgerInfo} from "../../@types/types";
 
 
 

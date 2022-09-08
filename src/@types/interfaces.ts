@@ -1,4 +1,5 @@
 import {BurgerFetchInfo, BurgerInfo, SortType} from "./types";
+import {BurgersSliceStatus} from "./enums";
 
 export interface ICartSliceState {
   //items: BurgerBlock[],
@@ -17,11 +18,11 @@ export interface IFilterSliceState {
 
 export interface IBurgersSliceState {
   itemsBurgers: BurgerFetchInfo[],
-  status: 'loading' | 'success' | 'error',
+  status: BurgersSliceStatus,
 }
 
+
 export interface IBurgerSliceProps {
-  searchValue: string,
   category: string,
   sortType: SortType,
   order: string,

@@ -1,5 +1,5 @@
 import React, {useEffect, useRef} from 'react';
-import {useDispatch, useSelector} from "react-redux";
+import {useSelector} from "react-redux";
 import {useNavigate, useLocation} from "react-router-dom";
 import AppCategories from "../../components/AppCategories/AppCategories";
 import AppSort from "../../components/AppSort/AppSort";
@@ -11,6 +11,8 @@ import qs from 'qs';
 import {filterSelector, setFilters} from "../../redux-toolkit/slices/filtersSlice.js";
 import {burgersSelector, fetchBurgers} from "../../redux-toolkit/slices/burgersSlice.js";
 import AppNoData from "../../components/AppNoData/AppNoData";
+import {IFilterSliceState} from "../../@types/interfaces";
+import {useAppDispatch} from "../../redux-toolkit/store";
 //import SceletonLoaderPizzaBlock from "../../components/SceletonLoaderPizzaBlock/SceletonLoaderPizzaBlock.tsx";
 
 
@@ -18,7 +20,7 @@ const Home: React.FC = () => {
   
   let navigate = useNavigate();
   let location = useLocation();
-  const dispatch = useDispatch();
+  const dispatch = useAppDispatch();
   
   const isHaveSearchParams = useRef(false);
   
@@ -33,7 +35,7 @@ const Home: React.FC = () => {
   
   useEffect(() => {
     if (location.search) {
-      const locationParams = qs.parse(location.search.substring(1));
+      const locationParams: IFilterSliceState = qs.parse(location.search.substring(1));
       
       dispatch(setFilters({...locationParams}));
       
@@ -95,7 +97,6 @@ const Home: React.FC = () => {
     //AСИНХРОННЫЙ ЗАПРОС =====================================================
     
     dispatch(
-      // @ts-ignore
       fetchBurgers({
       category,
       order,

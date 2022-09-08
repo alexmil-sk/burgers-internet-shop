@@ -3,14 +3,14 @@ import classes from './AppBurgerInfo.module.scss';
 import axios from 'axios';
 import {useNavigate, useParams} from "react-router-dom";
 import AppBurgerInfoBlur from "./AppBurgerInfoBlur.jsx";
-import {BurgerInfo} from '../../@types/types';
+import {BurgerFetchInfo} from '../../@types/types';
 
 
 
 const AppBurgerInfo: React.FC = () => {
   
   const [isLoading, setIsLoading] = useState(false);
-  const [burgerInfo, setBurgerInfo] = useState<BurgerInfo>({
+  const [burgerInfo, setBurgerInfo] = useState<BurgerFetchInfo>({
     id: '',
     imageUrl: '',
     name: '',
@@ -57,7 +57,7 @@ const AppBurgerInfo: React.FC = () => {
               <h2>Card of Burger</h2>
               <h3>{name}</h3>
               <p><strong>ID:</strong>&nbsp;{id}</p>
-              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Tempora, voluptatem.</p>
+              <p>Lorem ipsum dolor sit amet, consecrate radicalising elite. Temporary, voluptuary.</p>
               <p>Types:&nbsp; {types}
                 {
                   //types.map((i) => (

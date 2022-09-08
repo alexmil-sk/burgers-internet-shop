@@ -3,8 +3,9 @@ import axios from "axios";
 import {RootState} from "../store";
 import {IBurgersSliceState, IBurgerSliceProps} from "../../@types/interfaces";
 import {BurgerFetchInfo} from "../../@types/types";
+import {BurgersSliceStatus} from "../../@types/enums";
 
-export const fetchBurgers = createAsyncThunk<BurgerFetchInfo, IBurgerSliceProps>(
+export const fetchBurgers = createAsyncThunk<BurgerFetchInfo[], IBurgerSliceProps>(
   'burgers/fetchBurgersStatus',
   async ({category, order, sortType, limitPage, currentPage}) => {
     
@@ -17,10 +18,9 @@ export const fetchBurgers = createAsyncThunk<BurgerFetchInfo, IBurgerSliceProps>
   });
 
 
-
 const initialState: IBurgersSliceState = {
   itemsBurgers: [],
-  status: 'loading',//loading,| success | error
+  status: BurgersSliceStatus.LOADING,//loading,| success | error
 }
 
 const burgersSlice = createSlice({
@@ -31,25 +31,49 @@ const burgersSlice = createSlice({
     //  state.itemsBurgers = action.payload
     //},
   },
-  extraReducers: {
-    [fetchBurgers.pending]: (state) => {
-    //['burgers/fetchBurgersStatus/pending']: (state) => {
-      state.status = 'loading';
-      state.itemsBurgers = [];
   
-    },
-    //[fetchBurgers.fulfilled]: (state, action) => {
-    ['burgers/fetchBurgersStatus/fulfilled']: (state, action) => {
-      state.status = 'success';
-      state.itemsBurgers = action.payload;
-    },
-    [fetchBurgers.rejected]: (state) => {
-    //['burgers/fetchBurgersStatus/rejected']: (state) => {
-      state.status = 'error';
-      state.itemsBurgers = [];
-    },
+  
+  //ВАРИАНТ-1 ДЛЯ ТИПИЗАЦИИ В TYPESCRIPT ================================
+  
+  extraReducers: (builder) => {
     
+    builder.addCase(fetchBurgers.pending, (state, _) => {
+      state.status = BurgersSliceStatus.LOADING;
+      state.itemsBurgers = [];
+    });
+  
+    builder.addCase(fetchBurgers.fulfilled, (state, action) => {
+          state.status = BurgersSliceStatus.SUCCESS;
+          state.itemsBurgers = action.payload;
+    });
+  
+    builder.addCase(fetchBurgers.rejected, (state, _ ) => {
+           state.status = BurgersSliceStatus.ERROR;
+           state.itemsBurgers = [];
+    });
   },
+  
+  
+  //ВАРИАНТ-2 ДЛЯ ИСПОЛЬЗОВАНИЯ БЕЗ TYPESCRIPT ================================
+  // extraReducers: {
+  //   [fetchBurgers.pending]: (state) => {
+  //   //['burgers/fetchBurgersStatus/pending']: (state) => {
+  //     state.status = 'loading';
+  //     state.itemsBurgers = [];
+  //
+  //   },
+  //   //[fetchBurgers.fulfilled]: (state, action) => {
+  //   ['burgers/fetchBurgersStatus/fulfilled']: (state, action) => {
+  //     state.status = 'success';
+  //     state.itemsBurgers = action.payload;
+  //   },
+  //   [fetchBurgers.rejected]: (state) => {
+  //   //['burgers/fetchBurgersStatus/rejected']: (state) => {
+  //     state.status = 'error';
+  //     state.itemsBurgers = [];
+  //   },
+  //
+  // },
 });
 
 export const burgersSelector = (state: RootState) => state.burgers;

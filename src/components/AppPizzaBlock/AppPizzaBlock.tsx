@@ -1,7 +1,7 @@
 import React, {useState} from 'react';
 import './AppPizzaBlock.scss';
 import {useDispatch, useSelector} from "react-redux";
-import {addItemBurger, cartItemsSelector} from "../../redux-toolkit/slices/cartSlice.js";
+import {addItemBurger, cartItemsSelector} from "../../redux-toolkit/cart/cartSlice.js";
 import {Link} from "react-router-dom";
 import {AppPizzaBlockProps, BurgerInfo} from "../../@types/types";
 

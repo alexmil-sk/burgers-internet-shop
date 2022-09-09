@@ -2,8 +2,8 @@
   "extends": "./tsconfig-add.json",
   "compilerOptions": {
     "outDir": "public/scripts",
-    "target": "es6",
-    "module": "es6",
+    "target": "es2020",
+    "module": "es2020",
     "moduleResolution": "node",
     "jsx": "react-jsx",
     "strict": true,

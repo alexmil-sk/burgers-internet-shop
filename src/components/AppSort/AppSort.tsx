@@ -2,7 +2,7 @@ import React, {useState} from 'react';
 import './AppSort.scss';
 import {GrAscend, GrDescend} from "react-icons/gr";
 import {useDispatch} from "react-redux";
-import {setSortType, setRadioOrder, setLimitPage} from '../../redux-toolkit/slices/filtersSlice.js';
+import {setSortType, setRadioOrder, setLimitPage} from '../../redux-toolkit/filters/filtersSlice.js';
 import {ArrSortType} from '../../@types/types';
 import {IAppSortProps} from "../../@types/interfaces";
 

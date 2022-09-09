@@ -4,7 +4,7 @@ import {BsSearch} from "react-icons/bs";
 import {GrClose} from "react-icons/gr";
 import debounce from 'lodash.debounce';
 import {useDispatch} from "react-redux";
-import {setSearchValue} from "../../redux-toolkit/slices/filtersSlice.js";
+import {setSearchValue} from "../../redux-toolkit/filters/filtersSlice.js";
 
 
 const AppSearch: React.FC = () => {

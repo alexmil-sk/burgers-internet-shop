@@ -4,7 +4,7 @@ import pizzaMain from '../../assets/image/pizza-main.png';
 import {BsCart4} from "react-icons/bs";
 import {Link, useLocation} from "react-router-dom";
 import {useSelector} from "react-redux";
-import {cartSelector} from "../../redux-toolkit/slices/cartSlice.js";
+import {cartSelector} from "../../redux-toolkit/cart/cartSlice.js";
 
 
 function AppHeader(): React.ReactComponentElement<any> {

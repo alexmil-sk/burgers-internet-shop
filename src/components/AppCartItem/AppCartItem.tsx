@@ -3,7 +3,7 @@ import classes from "./AppCartItem.module.scss";
 import { AiOutlineMinusCircle } from "react-icons/ai";
 import { AiOutlinePlusCircle } from "react-icons/ai";
 import { AiOutlineCloseCircle } from "react-icons/ai";
-import {removeItemBurger, addItemBurger, addCartDecrement} from "../../redux-toolkit/slices/cartSlice.js";
+import {removeItemBurger, addItemBurger, addCartDecrement} from "../../redux-toolkit/cart/cartSlice.js";
 import {AppCartItemProps, BurgerInfo} from "../../@types/types";
 import {useAppDispatch} from "../../redux-toolkit/store";
 

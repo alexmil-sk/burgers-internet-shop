@@ -8,15 +8,16 @@ import AppPizzaBlock from "../../components/AppPizzaBlock/AppPizzaBlock";
 import Pagination from "../../components/Pagination/Pagination";
 import AppSearch from "../../components/AppSearch/AppSearch";
 import qs from 'qs';
-import {filterSelector, setFilters} from "../../redux-toolkit/slices/filtersSlice.js";
-import {burgersSelector, fetchBurgers} from "../../redux-toolkit/slices/burgersSlice.js";
+import {filterSelector, setFilters} from "../../redux-toolkit/filters/filtersSlice.js";
+import {burgersSelector} from "../../redux-toolkit/burgers/burgersSlice.js";
 import AppNoData from "../../components/AppNoData/AppNoData";
 import {IFilterSliceState} from "../../@types/interfaces";
 import {useAppDispatch} from "../../redux-toolkit/store";
+import {fetchBurgers} from "../../redux-toolkit/burgers/fetchBurgers";
 //import SceletonLoaderPizzaBlock from "../../components/SceletonLoaderPizzaBlock/SceletonLoaderPizzaBlock.tsx";
 
-
 const Home: React.FC = () => {
+  
   
   let navigate = useNavigate();
   let location = useLocation();

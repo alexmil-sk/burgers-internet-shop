@@ -1,4 +1,5 @@
 import {calcCartTotalPrice} from "./calcCartTotalPrice";
+import {BurgerInfo} from "../@types/types";
 
 export const getCartFromLocalStorage = () => {
   const ls = localStorage.getItem('cartItems');
@@ -6,7 +7,7 @@ export const getCartFromLocalStorage = () => {
   const totalPrice = calcCartTotalPrice(items)
   
     return {
-      items,
+      items: items as BurgerInfo [],
       totalPrice
     }
 }

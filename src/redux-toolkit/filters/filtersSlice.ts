@@ -45,9 +45,6 @@ export const filtersSlice = createSlice({
   },
 })
 
-export const filterSelector = (state: RootState) => state.filter;
-
-
 export const {
   setCategoryId,
   setSearchValue,
@@ -58,4 +55,7 @@ export const {
   setFilters
 } = filtersSlice.actions
 
-export default filtersSlice.reducer
+export default filtersSlice.reducer;
+
+
+export const filterSelector = (state: RootState) => state.filter;

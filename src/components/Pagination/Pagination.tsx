@@ -3,7 +3,7 @@ import React from 'react';
 import classes from './Pagination.module.scss';
 import ReactPaginate from "react-paginate";
 import {useDispatch} from "react-redux";
-import {setCurrentPage} from '../../redux-toolkit/slices/filtersSlice.js';
+import {setCurrentPage} from '../../redux-toolkit/filters/filtersSlice.js';
 import {PaginationPageChange} from '../../@types/types';
 
 

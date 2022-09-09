@@ -1,7 +1,7 @@
 import {createSlice, PayloadAction} from '@reduxjs/toolkit';
 import {ICartSliceState} from "../../@types/interfaces";
 import {RootState} from "../store";
-import {BurgerInfo} from "../../@types/types";
+import {BurgerBlockAdd} from "../../@types/types";
 import {getCartFromLocalStorage} from "../../utils/getCartFromLocalStorage";
 import {calcCartTotalPrice} from "../../utils/calcCartTotalPrice";
 
@@ -18,7 +18,7 @@ export const cartSlice = createSlice({
   initialState,
   
   reducers: {
-    addItemBurger(state, action: PayloadAction<BurgerInfo>) {
+    addItemBurger(state, action: PayloadAction<BurgerBlockAdd>) {
       
       const findItem = state.items.find(item =>
           item.id === action.payload.id

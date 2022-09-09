@@ -11,6 +11,18 @@ export type BurgerInfo = {
   type?: string;
 }
 
+export type BurgerBlockAdd = {
+  id: string;
+  imageUrl: string;
+  name: string;
+  price: number;
+  rating: number;
+  sizes: number[];
+  types: number[];
+  size?: number;
+  type?: string;
+}
+
 export type ArrSortType = {
   name: string,
   sortProperty: 'price' | 'rating' | 'name',

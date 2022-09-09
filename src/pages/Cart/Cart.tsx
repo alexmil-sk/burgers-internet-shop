@@ -6,7 +6,7 @@ import {RiDeleteBin6Line} from "react-icons/ri";
 import {ImList2} from "react-icons/im";
 import AppCartItem from "../../components/AppCartItem/AppCartItem";
 import {Link} from "react-router-dom";
-import {cartSelector, clearCartItemsBurger} from "../../redux-toolkit/cart/cartSlice.js";
+import {cartSelector, clearCartItemsBurger} from "../../redux-toolkit/cart/cartSlice";
 import AppEmptyCart from "../../components/AppEmptyCart/AppEmptyCart";
 import {BurgerInfo} from "../../@types/types";
 

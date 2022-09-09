@@ -3,7 +3,7 @@ import './AppPizzaBlock.scss';
 import {useDispatch, useSelector} from "react-redux";
 import {addItemBurger, cartItemsSelector} from "../../redux-toolkit/cart/cartSlice.js";
 import {Link} from "react-router-dom";
-import {AppPizzaBlockProps, BurgerInfo} from "../../@types/types";
+import {AppPizzaBlockProps, BurgerBlockAdd} from "../../@types/types";
 
 const pizzaTypesArray: string[] = ['тонкое', 'традиционное'];
 
@@ -20,7 +20,7 @@ const AppPizzaBlock: React.FC<AppPizzaBlockProps> = ({...item}: AppPizzaBlockPro
   const [activeType, setActiveType] = useState<number>(0);
   
   function onClickAdd() {
-    const newItem: BurgerInfo = {
+    const newItem: BurgerBlockAdd = {
       ...item,
       type: pizzaTypesArray[activeType],
       size: sizes[activeSize],

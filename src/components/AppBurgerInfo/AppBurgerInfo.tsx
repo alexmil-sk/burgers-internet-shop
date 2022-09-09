@@ -89,7 +89,6 @@ const AppBurgerInfo: React.FC = () => {
             
             <div className={classes.AppBurgerInfoContainerTextBottom}>
               <p><strong>Price:</strong><span>&nbsp;{price}&nbsp;&#8381;</span></p>
-              <button>order</button>
             </div>
           </div>
         

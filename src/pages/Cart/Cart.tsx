@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useEffect, useRef} from 'react';
 import {useDispatch, useSelector} from 'react-redux';
 import classes from './Cart.module.scss';
 import {BsCart4} from "react-icons/bs";
@@ -18,6 +18,16 @@ const Cart: React.FC = () => {
   const totalCartCount = items.reduce((acc: number, item: {count: number}) => {
     return acc + item.count
   }, 0);
+  const isMounted = useRef(false);
+  
+  
+  useEffect(() => {
+    if(isMounted.current) {
+      const ls = JSON.stringify(items);
+      localStorage.setItem('cartItems', ls);
+    }
+    isMounted.current = true;
+  }, [items]);
   
   function onClearCart() {
     if(window.confirm('Are you sure you want to clear order')) {

@@ -2,12 +2,15 @@ import {createSlice, PayloadAction} from '@reduxjs/toolkit';
 import {ICartSliceState} from "../../@types/interfaces";
 import {RootState} from "../store";
 import {BurgerInfo} from "../../@types/types";
+import {getCartFromLocalStorage} from "../../utils/getCartFromLocalStorage";
+import {calcCartTotalPrice} from "../../utils/calcCartTotalPrice";
 
 
+const {items, totalPrice} = getCartFromLocalStorage();
 
 const initialState: ICartSliceState = {
-  items: [],
-  totalPrice: 0,
+  items,
+  totalPrice,
 }
 
 export const cartSlice = createSlice({
@@ -27,17 +30,13 @@ export const cartSlice = createSlice({
       } else {
         state.items.push({...action.payload, count: 1});
       }
-      
-      state.totalPrice = state.items.reduce((accum, item) => {
-        return accum + (item['price'] * item.count);
-      }, 0)
+  
+      state.totalPrice = calcCartTotalPrice(state.items);
     },
     removeItemBurger(state, action: PayloadAction<string>) {
       state.items = state.items.filter(item => item.id !== action.payload);
       
-      state.totalPrice = state.items.reduce((accum, item) => {
-        return accum + (item['price'] * item.count);
-      }, 0)
+      state.totalPrice = calcCartTotalPrice(state.items);
     },
   
     clearCartItemsBurger(state, _) {
@@ -50,9 +49,8 @@ export const cartSlice = createSlice({
       if (findItemIncr!.count > 1) {
         findItemIncr!.count--;
       }
-      state.totalPrice = state.items.reduce((accum, item) => {
-        return accum + (item['price'] * item.count);
-      }, 0)
+      
+      state.totalPrice = calcCartTotalPrice(state.items);
     }
   }
 });

@@ -2,8 +2,7 @@ import {BurgerFetchInfo, BurgerInfo, SortType} from "./types";
 import {BurgersSliceStatusEnum} from "./enums";
 
 export interface ICartSliceState {
-  //items: BurgerBlock[],
-  items: BurgerInfo[],
+  items:  BurgerInfo[],
   totalPrice: number,
 }
 

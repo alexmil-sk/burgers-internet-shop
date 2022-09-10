@@ -14,7 +14,7 @@ export const arrSortTypes: ArrSortType[] = [
 
 
 
-const AppSort: React.FC<IAppSortProps> = React.memo(({sortType, radioOrder, limitPage}) => {
+export const AppSort: React.FC<IAppSortProps> = React.memo(({sortType, radioOrder, limitPage}) => {
   
   const dispatch = useDispatch();
   const [toggleOpenPopup, setTogglesOpenPopup] = useState(false);
@@ -111,5 +111,3 @@ const AppSort: React.FC<IAppSortProps> = React.memo(({sortType, radioOrder, limi
     </div>
   );
 })
-
-export default AppSort;

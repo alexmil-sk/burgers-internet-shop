@@ -2,12 +2,13 @@ import React, {useEffect, useState} from 'react';
 import classes from './AppBurgerInfo.module.scss';
 import axios from 'axios';
 import {useNavigate, useParams} from "react-router-dom";
-import AppBurgerInfoBlur from "./AppBurgerInfoBlur.jsx";
 import {BurgerFetchInfo} from '../../@types/types';
 
+import {AppBurgerInfoBlur} from '../../components';
 
 
-const AppBurgerInfo: React.FC = () => {
+
+export const AppBurgerInfo: React.FC = () => {
   
   const [isLoading, setIsLoading] = useState(false);
   const [burgerInfo, setBurgerInfo] = useState<BurgerFetchInfo>({
@@ -97,5 +98,3 @@ const AppBurgerInfo: React.FC = () => {
     </>
   );
 }
-
-export default AppBurgerInfo;

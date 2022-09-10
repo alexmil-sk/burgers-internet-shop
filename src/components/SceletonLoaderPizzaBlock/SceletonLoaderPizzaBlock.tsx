@@ -1,7 +1,7 @@
 import React from "react"
 import ContentLoader from "react-content-loader"
 
-const SceletonLoaderPizzaBlock: React.FC = (props) => (
+export const SceletonLoaderPizzaBlock: React.FC = (props) => (
   <ContentLoader
     speed={4}
     width={300}
@@ -20,5 +20,3 @@ const SceletonLoaderPizzaBlock: React.FC = (props) => (
     <rect x="33" y="464" rx="18" ry="18" width="180" height="46" />
   </ContentLoader>
 )
-
-export default SceletonLoaderPizzaBlock;

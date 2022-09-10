@@ -6,7 +6,7 @@ import btnBurger from '../../assets/image/btn/btn-burger.png';
 import classes from "./AppEmptyCart.module.scss";
 
 
-function AppEmptyCart(): React.ReactComponentElement<any> {
+export const AppEmptyCart: React.FC = () => {
   
   const [isPressedBtn, setIsPressedBtn] = useState(false);
   
@@ -37,5 +37,3 @@ function AppEmptyCart(): React.ReactComponentElement<any> {
     </>
   );
 }
-
-export default AppEmptyCart;

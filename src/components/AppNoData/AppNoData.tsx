@@ -3,7 +3,7 @@ import noData from '../../assets/image/no-data.jpg';
 import classes from "./AppNoData.module.scss";
 
 
-const AppNoData: React.FC = () => {
+export const AppNoData: React.FC = () => {
   return (
     <>
       <div className={classes.AppNoData}>
@@ -15,5 +15,3 @@ const AppNoData: React.FC = () => {
     </>
   );
 }
-
-export default AppNoData;

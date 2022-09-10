@@ -2,7 +2,7 @@ import React from 'react';
 import classes from './AppBurgerInfo.module.scss';
 import burgerImg from '../../assets/image/template.jpg';
 
-function AppBurgerInfoBlur() {
+export function AppBurgerInfoBlur() {
   
   
   return (
@@ -35,5 +35,3 @@ function AppBurgerInfoBlur() {
     </>
   );
 }
-
-export default AppBurgerInfoBlur;

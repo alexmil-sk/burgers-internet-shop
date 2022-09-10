@@ -7,7 +7,7 @@ import {useSelector} from "react-redux";
 import {cartSelector} from "../../redux-toolkit/cart/cartSlice.js";
 
 
-function AppHeader(): React.ReactComponentElement<any> {
+export function AppHeader(): React.ReactComponentElement<any> {
   const {pathname} = useLocation();
   
   
@@ -47,5 +47,3 @@ function AppHeader(): React.ReactComponentElement<any> {
     </div>
   );
 }
-
-export default AppHeader;

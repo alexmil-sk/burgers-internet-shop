@@ -1,23 +1,19 @@
 import React, {useEffect, useRef} from 'react';
 import {useSelector} from "react-redux";
 import {useNavigate, useLocation} from "react-router-dom";
-import AppCategories from "../../components/AppCategories/AppCategories";
-import AppSort from "../../components/AppSort/AppSort";
-import AppPizzaBlockBlur from "../../components/AppPizzaBlock/AppPizzaBlockBlur.js";
-import AppPizzaBlock from "../../components/AppPizzaBlock/AppPizzaBlock";
-import Pagination from "../../components/Pagination/Pagination";
-import AppSearch from "../../components/AppSearch/AppSearch";
+
+import {AppPizzaBlockBlur, AppPizzaBlock, AppCategories, Pagination, AppSearch, AppSort, AppNoData} from '../../components';
+//import {SceletonLoaderPizzaBlock} from '../../components';
+
 import qs from 'qs';
-import {filterSelector, setFilters} from "../../redux-toolkit/filters/filtersSlice.js";
-import {burgersSelector} from "../../redux-toolkit/burgers/burgersSlice.js";
-import AppNoData from "../../components/AppNoData/AppNoData";
+import {filterSelector, setFilters} from "../../redux-toolkit/filters/filtersSlice";
+import {burgersSelector} from "../../redux-toolkit/burgers/burgersSlice";
 import {IFilterSliceState} from "../../@types/interfaces";
 import {useAppDispatch} from "../../redux-toolkit/store";
 import {fetchBurgers} from "../../redux-toolkit/burgers/fetchBurgers";
-//import SceletonLoaderPizzaBlock from "../../components/SceletonLoaderPizzaBlock/SceletonLoaderPizzaBlock.tsx";
+
 
 const Home: React.FC = () => {
-  
   
   let navigate = useNavigate();
   let location = useLocation();

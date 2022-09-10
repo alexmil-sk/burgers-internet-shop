@@ -1,7 +1,7 @@
 import React from 'react';
 import './AppPizzaBlock.scss';
 
-const AppPizzaBlock: React.FC = () => {
+export const AppPizzaBlockBlur: React.FC = () => {
   
   return (
     <div className="pizza-block" style={{filter: 'blur(10px)'}}>
@@ -31,5 +31,3 @@ const AppPizzaBlock: React.FC = () => {
     </div>
   );
 }
-
-export default AppPizzaBlock;

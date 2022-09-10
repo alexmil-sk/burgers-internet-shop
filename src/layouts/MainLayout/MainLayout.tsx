@@ -1,7 +1,7 @@
 import React from 'react';
 import {Outlet} from 'react-router-dom';
 //import classes from './MainLayout.module.scss';
-import AppHeader from "../../components/AppHeader/AppHeader";
+import {AppHeader} from "../../components";
 
 const MainLayout: React.FC = () => {
   return (

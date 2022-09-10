@@ -8,7 +8,7 @@ import {PaginationPageChange} from '../../@types/types';
 
 
 
-const Pagination: React.FC = () => {
+export const Pagination: React.FC = () => {
   
   const dispatch = useDispatch();
   
@@ -31,5 +31,3 @@ const Pagination: React.FC = () => {
     </div>
   );
 }
-
-export default Pagination;

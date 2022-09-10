@@ -9,7 +9,7 @@ import {useAppDispatch} from "../../redux-toolkit/store";
 
 
 
-const AppCartItem: React.FC<AppCartItemProps> = ({item}:AppCartItemProps) => {
+export const AppCartItem: React.FC<AppCartItemProps> = ({item}:AppCartItemProps) => {
   
   const {id, name, imageUrl, price, type, size, count} = item;
   const dispatch = useAppDispatch();
@@ -56,5 +56,3 @@ const AppCartItem: React.FC<AppCartItemProps> = ({item}:AppCartItemProps) => {
     </>
   );
 }
-
-export default AppCartItem;

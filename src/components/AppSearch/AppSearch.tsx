@@ -7,7 +7,7 @@ import {useDispatch} from "react-redux";
 import {setSearchValue} from "../../redux-toolkit/filters/filtersSlice.js";
 
 
-const AppSearch: React.FC = () => {
+export const AppSearch: React.FC = () => {
   
   const dispatch = useDispatch();
   
@@ -54,5 +54,3 @@ const AppSearch: React.FC = () => {
     </div>
   );
 }
-
-export default AppSearch;

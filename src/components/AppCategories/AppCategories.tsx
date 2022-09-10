@@ -6,7 +6,7 @@ import {Category} from '../../@types/types';
 
 
 
-const AppCategories: React.FC = (): React.ReactComponentElement<any> => {
+export const AppCategories: React.FC = (): React.ReactComponentElement<any> => {
   
   const dispatch = useDispatch();
   
@@ -35,5 +35,3 @@ const AppCategories: React.FC = (): React.ReactComponentElement<any> => {
     </div>
   );
 }
-
-export default AppCategories;

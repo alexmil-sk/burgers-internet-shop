@@ -3,14 +3,11 @@ import React, {Suspense} from "react";
 import {Routes, Route} from "react-router-dom";
 import Home from "./pages/Home/Home";
 import NotFound from "./pages/NotFound/NotFound.js";
-//import Cart from "./pages/Cart/Cart.js";
-//import AppBurgerInfo from "./components/AppBurgerInfo/AppBurgerInfo.js";
 import MainLayout from "./layouts/MainLayout/MainLayout";
 import InfoLayout from "./layouts/InfoLayout/InfoLayout";
-import AppLoader from "./components/AppLoader/AppLoader";
+import {AppLoader, AppBurgerInfo} from "./components";
 
 const Cart = React.lazy(() => import(/* webpackChunkName: "CartChunk" */"./pages/Cart/Cart"))
-const AppBurgerInfo = React.lazy(() => import(/* webpackChunkName: "AppBurgerInfoChunk" */"./components/AppBurgerInfo/AppBurgerInfo"));
 
 
 function App() {

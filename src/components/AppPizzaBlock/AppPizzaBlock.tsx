@@ -8,7 +8,7 @@ import {AppPizzaBlockProps, BurgerBlockAdd} from "../../@types/types";
 const pizzaTypesArray: string[] = ['тонкое', 'традиционное'];
 
 
-const AppPizzaBlock: React.FC<AppPizzaBlockProps> = ({...item}: AppPizzaBlockProps) => {
+export const AppPizzaBlock: React.FC<AppPizzaBlockProps> = ({...item}: AppPizzaBlockProps) => {
   const {id, name, price, imageUrl, sizes, types, rating} = item;
   
   const dispatch = useDispatch();
@@ -82,5 +82,3 @@ const AppPizzaBlock: React.FC<AppPizzaBlockProps> = ({...item}: AppPizzaBlockPro
     </div>
   );
 }
-
-export default AppPizzaBlock;

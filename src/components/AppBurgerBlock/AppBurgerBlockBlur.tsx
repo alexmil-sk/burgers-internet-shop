@@ -1,7 +1,7 @@
 import React from 'react';
-import './AppPizzaBlock.scss';
+import './AppBurgerBlock.scss';
 
-export const AppPizzaBlockBlur: React.FC = () => {
+export const AppBurgerBlockBlur: React.FC = () => {
   
   return (
     <div className="pizza-block" style={{filter: 'blur(10px)'}}>

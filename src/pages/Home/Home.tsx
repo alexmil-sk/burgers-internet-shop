@@ -2,8 +2,8 @@ import React, {useEffect, useRef} from 'react';
 import {useSelector} from "react-redux";
 import {useNavigate, useLocation} from "react-router-dom";
 
-import {AppPizzaBlockBlur, AppPizzaBlock, AppCategories, Pagination, AppSearch, AppSort, AppNoData} from '../../components';
-//import {SceletonLoaderPizzaBlock} from '../../components';
+import {AppBurgerBlockBlur, AppBurgerBlock, AppCategories, Pagination, AppSearch, AppSort, AppNoData} from '../../components';
+//import {SceletonLoaderBurgerBlock} from '../../components';
 
 import qs from 'qs';
 import {filterSelector, setFilters} from "../../redux-toolkit/filters/filtersSlice";
@@ -114,25 +114,25 @@ const Home: React.FC = () => {
           limitPage={limitPage}
         />
       </div>
-      <div className="pizza-list">
+      <div className="burger-list">
         
         {/*Вариант с РАЗМЫТИЕМ ===========================*/}
         {
           status === 'error'
             ? (<AppNoData/>)
             : status === 'loading'
-              ? [...new Array(12)].map((_, idx) => <AppPizzaBlockBlur key={idx}/>)
+              ? [...new Array(12)].map((_, idx) => <AppBurgerBlockBlur key={idx}/>)
               : itemsBurgers
                 .filter(item => item.name.toLowerCase().includes(searchValue.toLowerCase()))
-                .map(item => (<AppPizzaBlock {...item} key={item.id}/>))
+                .map(item => (<AppBurgerBlock {...item} key={item.id}/>))
         }
         
         {/*Вариант со SCELETON ===========================*/}
         {/*{*/}
         {/*  isLoading*/}
-        {/*    ? [...new Array(6)].map((_, idx) => <SceletonLoaderPizzaBlock key={idx}/>)*/}
+        {/*    ? [...new Array(6)].map((_, idx) => <SceletonLoaderBurgerBlock key={idx}/>)*/}
         {/*    : pizzaArray.map(item =>*/}
-        {/*      (<AppPizzaBlock*/}
+        {/*      (<AppBurgerBlock*/}
         {/*          */}
         {/*          {...item}*/}
         {/*          key={item.id}*/}

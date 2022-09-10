@@ -56,7 +56,7 @@ export type BurgerFetchInfo = {
 }
 
 
-export type AppPizzaBlockProps = BurgerBlock;
+export type AppBurgerBlockProps = BurgerBlock;
 
 export type PaginationPageChange = {
   selected: number

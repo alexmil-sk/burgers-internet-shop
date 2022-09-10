@@ -1,6 +1,6 @@
 import React from 'react';
 import './AppHeader.scss';
-import pizzaMain from '../../assets/image/pizza-main.png';
+import burgerMain from '../../assets/image/btn/btn-burger.png';
 import {BsCart4} from "react-icons/bs";
 import {Link, useLocation} from "react-router-dom";
 import {useSelector} from "react-redux";
@@ -21,7 +21,7 @@ export function AppHeader(): React.ReactComponentElement<any> {
       <Link to="/">
         <div className="header__logo">
           <div className="header__logo-img">
-            <img src={pizzaMain} width="50" alt="pizza-main"/>
+            <img src={burgerMain} width="50" alt="pizza-main"/>
           </div>
           <span>iBurgeR</span>
         </div>

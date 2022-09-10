@@ -1,7 +1,7 @@
 import React from "react"
 import ContentLoader from "react-content-loader"
 
-export const SceletonLoaderPizzaBlock: React.FC = (props) => (
+export const SceletonLoaderBurgerBlock: React.FC = (props) => (
   <ContentLoader
     speed={4}
     width={300}

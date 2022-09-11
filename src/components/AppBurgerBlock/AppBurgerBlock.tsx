@@ -5,7 +5,7 @@ import {addItemBurger, cartItemsSelector} from "../../redux-toolkit/cart/cartSli
 import {Link} from "react-router-dom";
 import {AppBurgerBlockProps, BurgerBlockAdd} from "../../@types/types";
 
-const burgerTypesArray: string[] = ['тонкое', 'традиционное'];
+const burgerTypesArray: string[] = ['crispy bun', 'regular bun'];
 
 
 export const AppBurgerBlock: React.FC<AppBurgerBlockProps> = ({...item}: AppBurgerBlockProps) => {
@@ -32,8 +32,8 @@ export const AppBurgerBlock: React.FC<AppBurgerBlockProps> = ({...item}: AppBurg
   return (
     <div className="burger-block">
       <div className="burger-block__image">
-        <Link to={`burgers/${id}`} key={id}>
-          <img src={imageUrl} alt="pizza-main"/>
+        <Link to={`burgers/${id}`} key={id} >
+          <img src={imageUrl} alt="burger-main"/>
         </Link>
         <div className="rating-result">
           {
@@ -47,7 +47,7 @@ export const AppBurgerBlock: React.FC<AppBurgerBlockProps> = ({...item}: AppBurg
           }
         </div>
       </div>
-      <h4 className="burger-block__title">{name}&nbsp;(#{id})</h4>
+      <h4 className="burger-block__title">{name}&nbsp;</h4>
       <div className="burger-block__selector">
         <ul className="burger-block__selector-type">
           {types.map((type, idx) =>
@@ -64,12 +64,12 @@ export const AppBurgerBlock: React.FC<AppBurgerBlockProps> = ({...item}: AppBurg
               onClick={() => setActiveSize(idx)}
               className={activeSize === idx ? 'active' : ''}
               key={size}
-            > {size} см</li>
+            > {size} cm</li>
           )}
         </ul>
       </div>
       <div className="burger-block__bottom">
-        <div className="burger-block__price">от <strong>{price}</strong>&nbsp;руб.</div>
+        <div className="burger-block__price"><strong>&#8364;&nbsp;{(price/70).toFixed(2)}</strong></div>
         <button
           onClick={onClickAdd}
           className="burger-block__bottom-button"

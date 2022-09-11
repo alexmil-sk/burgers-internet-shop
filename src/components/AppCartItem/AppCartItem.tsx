@@ -24,11 +24,11 @@ export const AppCartItem: React.FC<AppCartItemProps> = ({item}:AppCartItemProps)
     <>
       <div className={classes.cartItem}>
         <div className={classes.cartItemImg}>
-          <img src={imageUrl} width="70" alt="pizza-main"/>
+          <img src={imageUrl} width="70" alt="burger-main"/>
         </div>
         <div className={classes.cartItemTitle}>
           <p>{name}</p>
-          <span>{type}&nbsp;flour, {size}&nbsp;cm</span>
+          <span>{type}&nbsp;, {size}&nbsp;cm</span>
         </div>
         <div className={classes.cartItemCount}>
             <AiOutlineMinusCircle
@@ -43,7 +43,7 @@ export const AppCartItem: React.FC<AppCartItemProps> = ({item}:AppCartItemProps)
           />
         </div>
         <div className={classes.cartItemPrice}>
-          <span>{price * count}&nbsp;&#8381;</span>
+          <span>&nbsp;&#8364;&nbsp;{((price * count) / 70).toFixed(2)}&nbsp;</span>
         </div>
         <div
           className={classes.cartItemDel}

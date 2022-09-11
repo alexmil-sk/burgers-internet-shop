@@ -7,9 +7,9 @@ import {ArrSortType} from '../../@types/types';
 import {IAppSortProps} from "../../@types/interfaces";
 
 export const arrSortTypes: ArrSortType[] = [
-  {name: 'популярности', sortProperty: 'rating'},
-  {name: 'цене', sortProperty: 'price'},
-  {name: 'алфавиту', sortProperty: 'name'}
+  {name: 'popularity', sortProperty: 'rating'},
+  {name: 'price', sortProperty: 'price'},
+  {name: 'alphabetically', sortProperty: 'name'}
 ];
 
 
@@ -40,7 +40,7 @@ export const AppSort: React.FC<IAppSortProps> = React.memo(({sortType, radioOrde
     <div className="sort">
       <div className="sort__label">
         <div className="sort__label-title">
-          <strong>Сортировка по:</strong>
+          <strong>Sort by:</strong>
         </div>
         <div className="sort__label-btn" onClick={toggleSortHandle}>
           <span>{sortType.name}</span>

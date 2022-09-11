@@ -103,7 +103,7 @@
     //display: block;
     background: $gray-200;
     top: 60px;
-    right: 20px;
+    right: 50px;
     padding: 5px;
     border: 1px solid $gray-400;
     opacity: 1;
@@ -123,6 +123,9 @@
     }
     @media (max-width: 570px) {
       right: 28%;
+    }
+    li {
+      line-height: 1.75rem;
     }
   }
 

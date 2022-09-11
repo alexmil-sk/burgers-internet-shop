@@ -38,7 +38,7 @@ export const AppSearch: React.FC = () => {
       </span>
       <input
         type="text"
-        placeholder="Введите название пиццы..."
+        placeholder="Start typing the name of the burger..."
         value={localSearchField}
         ref={inputRef}
         onChange={onChangeInput}

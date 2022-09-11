@@ -7,7 +7,6 @@ import {BurgerFetchInfo} from '../../@types/types';
 import {AppBurgerInfoBlur} from '../../components';
 
 
-
 export const AppBurgerInfo: React.FC = () => {
   
   const [isLoading, setIsLoading] = useState(false);
@@ -15,12 +14,14 @@ export const AppBurgerInfo: React.FC = () => {
     id: '',
     imageUrl: '',
     name: '',
+    desc: '',
+    weight: '',
     price: 0,
     rating: 0,
     sizes: [],
     types: [],
   });
-  const {id, imageUrl, name, price, rating, sizes, types} = burgerInfo;
+  const {id, imageUrl, name, desc, weight, price, rating, sizes, types} = burgerInfo;
   const {burgerId} = useParams();
   const navigate = useNavigate();
   
@@ -55,46 +56,47 @@ export const AppBurgerInfo: React.FC = () => {
           <div className={classes.AppBurgerInfoContainerText}>
             
             <div className={classes.AppBurgerInfoContainerTextInfo}>
-              <h2>Card of Burger</h2>
-              <h3>{name}</h3>
+              <h2>{name}</h2>
               <p><strong>ID:</strong>&nbsp;{id}</p>
-              <p>Lorem ipsum dolor sit amet, consecrate radicalising elite. Temporary, voluptuary.</p>
-              <p>Types:&nbsp; {types}
+              <p><strong>Description:</strong>&nbsp;{desc}</p>
+              <p><strong>Weight:</strong>&nbsp;{weight}</p>
+              <p><strong>Types:</strong>&nbsp;
                 {
-                  //types.map((i) => (
-                  //  i === 0 ? <span key={i}>тонкое | </span> : <span key={i}>традиционное</span>
-                  //))
+                  types.map((i) => (
+                    i === 0 ? <span key={i}>crispy bun</span> : <span key={i}>&nbsp;|&nbsp;regular bun</span>
+                  ))
                 }
-              </p>Sizes:&nbsp;{sizes}
-              {
-                //sizes.map((i) => (
-                //  <span key={i}>{i}&nbsp;cm</span>
-                //))
-              }
-              <div className={classes.AppBurgerInfoContainerTextInfoRating}>Rating:&nbsp;<span>{rating}</span>
-                <div className={classes.ratingArea}>
-                  <input type="radio" id="star-5" name="rating" value="5"/>
-                  <label htmlFor="star-5" title="Оценка «5»"></label>
-                  <input type="radio" id="star-4" name="rating" value="4"/>
-                  <label htmlFor="star-4" title="Оценка «4»"></label>
-                  <input type="radio" id="star-3" name="rating" value="3"/>
-                  <label htmlFor="star-3" title="Оценка «3»"></label>
-                  <input type="radio" id="star-2" name="rating" value="2"/>
-                  <label htmlFor="star-2" title="Оценка «2»"></label>
-                  <input type="radio" id="star-1" name="rating" value="1"/>
-                  <label htmlFor="star-1" title="Оценка «1»"></label>
-                </div>
-              </div>
-            
+              </p>
+              <p><strong>Sizes:</strong>&nbsp;
+                {
+                  sizes.map((i) => (
+                    <span key={i}>{i}&nbsp;cm&nbsp;|&nbsp;</span>
+                  ))
+                }
+              </p>
             </div>
-            
+            <div className={classes.AppBurgerInfoContainerTextInfoRating}>
+              <p><strong>Current rating:</strong>&nbsp;<span>{rating}</span></p>
+              <div className={classes.ratingArea}>
+                <input type="radio" id="star-5" name="rating" value="5"/>
+                <label htmlFor="star-5" title="Оценка «5»"></label>
+                <input type="radio" id="star-4" name="rating" value="4"/>
+                <label htmlFor="star-4" title="Оценка «4»"></label>
+                <input type="radio" id="star-3" name="rating" value="3"/>
+                <label htmlFor="star-3" title="Оценка «3»"></label>
+                <input type="radio" id="star-2" name="rating" value="2"/>
+                <label htmlFor="star-2" title="Оценка «2»"></label>
+                <input type="radio" id="star-1" name="rating" value="1"/>
+                <label htmlFor="star-1" title="Оценка «1»"></label>
+              </div>
+            </div>
             <div className={classes.AppBurgerInfoContainerTextBottom}>
-              <p><strong>Price:</strong><span>&nbsp;{price}&nbsp;&#8381;</span></p>
+              <p><strong>Price:</strong><span style={{color: 'red'}}><strong>&nbsp;&#8364;&nbsp;{(price / 70).toFixed(2)}</strong></span></p>
             </div>
           </div>
-        
         </div>
       </div>
     </>
-  );
+  )
+    ;
 }

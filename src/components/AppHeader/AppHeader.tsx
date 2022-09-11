@@ -34,7 +34,8 @@ export function AppHeader(): React.ReactComponentElement<any> {
         : (<Link to="cart" className="header__a">
             <div className="header__cart">
               <div className="header__cart-sum">
-                <span>{totalPrice}&nbsp; &#8381;</span>
+                {/*<span>{totalPrice}&nbsp; &#8381;</span>*/}
+                <span>&nbsp;&#8364;&nbsp;{(totalPrice / 70).toFixed(2)}&nbsp;</span>
               </div>
               <div className="header__cart-icon">
                 <BsCart4/>

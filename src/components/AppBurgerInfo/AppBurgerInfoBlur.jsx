@@ -1,6 +1,6 @@
 import React from 'react';
 import classes from './AppBurgerInfo.module.scss';
-import burgerImg from '../../assets/image/template.jpg';
+import burgerImg from '../../assets/image/btn/btn-burger.png';
 
 export function AppBurgerInfoBlur() {
   

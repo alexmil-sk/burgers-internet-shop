@@ -57,7 +57,7 @@ const Cart: React.FC = () => {
       <div className={classes.cartBottom}>
         <div className={classes.cartBottomDetails}>
           <span>Total in order: <strong>{totalCartCount}&nbsp;pcs.</strong></span>
-          <span>Order amount: <strong>{totalPrice}&nbsp;&#8381;</strong></span>
+          <span>Order amount: <strong>&nbsp;&#8364;&nbsp;{(totalPrice / 70).toFixed(2)}&nbsp;</strong></span>
         </div>
         <div className={classes.cartBottomBtn}>
           <Link to="/" className={classes.cartBottomBtnList}>

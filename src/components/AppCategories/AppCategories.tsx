@@ -10,7 +10,7 @@ export const AppCategories: React.FC = (): React.ReactComponentElement<any> => {
   
   const dispatch = useDispatch();
   
-  const categories: Category[] = ['Все', 'Мясные', 'Вегетарианская', 'Гриль', 'Острые', 'Закрытые']
+  const categories: Category[] = ['All', 'Beef', 'Chicken', 'Sausage', 'Spicy', 'Bacon']
   
   const {categoryId} = useSelector(filterSelector);
   

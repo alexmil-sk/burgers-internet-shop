@@ -7,7 +7,7 @@ import {SortType} from "../../@types/types";
 const initialState: IFilterSliceState = {
   searchValue: '',
   categoryId: 0,
-  sortType: {name: 'популярности', sortProperty: 'rating'},
+  sortType: {name: 'popularity', sortProperty: 'rating'},
   radioOrder: 'asc',
   limitPage: '5',
   currentPage: 1,

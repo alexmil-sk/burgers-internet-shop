@@ -49,6 +49,8 @@ export type BurgerFetchInfo = {
   id: string;
   imageUrl: string;
   name: string;
+  desc: string;
+  weight: string;
   price: number;
   rating: number;
   sizes: number[];
